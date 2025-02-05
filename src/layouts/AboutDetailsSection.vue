@@ -3,8 +3,9 @@
         <v-row>
             <v-col class="about-container">
                 <v-col class="px-0 d-flex flex-column flex-lg-row">
-                    <div>
-                        <span class="custom-font mb-lg-5 mb-5 text-h6 d-block text-md-h5 text-lg-h4">Hello braders, </span>
+                    <div data-aos="fade-left" data-aos-duration="2000">
+                        
+                        <span  class="custom-font mb-lg-5 mb-5 text-h6 d-block text-md-h5 text-lg-h4">Who am I? </span>
                         <h3 class="slogan-font text-yellow text-h4 text-md-h5 mb-4 text-lg-h2 font-weight-bold">
                             I'm Charles Caseñas
                         </h3>
@@ -16,7 +17,7 @@
                             </p>
                         </div>
                     </div>
-                    <div class="w-100 mt-10 mt-lg-0 w-lg-100">
+                    <div data-aos="fade-right" data-aos-duration="2000" class="w-100 mt-10 mt-lg-0 w-lg-100">
                         <span class="text-h4 text-yellow text-lg-h2 slogan-font">
                             ❝ Fuel your hunger for growth with the same passion you have for food. ❞
                         </span>
@@ -26,7 +27,15 @@
         </v-row>
     </v-container>
 </template>
+<script setup>
 
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+
+onMounted(() => {
+    AOS.init();
+});
+</script>
 <style scoped>
 
 .grid-container {

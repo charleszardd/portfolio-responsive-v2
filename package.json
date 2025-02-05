@@ -12,6 +12,7 @@
   "dependencies": {
     "@google/generative-ai": "^0.21.0",
     "@mdi/font": "7.4.47",
+    "aos": "^2.3.4",
     "axios": "^1.7.9",
     "lottie-web": "^5.12.2",
     "roboto-fontface": "*",

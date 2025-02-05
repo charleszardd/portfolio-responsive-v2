@@ -1,13 +1,13 @@
 <template>
     <v-container class=" main-container px-5 px-lg-10" fluid>
       <div class="mt-8 d-flex justify-end sticky-thing" elevation="10">
-        <v-icon class="text-grey-lighten-2 cursor-pointer">mdi-robot-outline</v-icon>
+        <v-icon class="text-yellow cursor-pointer">mdi-robot-outline</v-icon>
       </div>
         <v-row class="items">
         
             <v-col class="hero-container">
                 <div class="bg-img"></div>
-                <h1 class="text-h5  text-lg-h2 hero-font font-weight-bold">{{profile.name}}</h1>
+                <h1 class="text-h5 text-yellow text-lg-h2 hero-font font-weight-bold">{{profile.name}}</h1>
                 <p class="custom-font text-grey-lighten-2 mt-3 mt-lg-5 text-h6">{{profile.role}}</p>
             </v-col>
         </v-row>
