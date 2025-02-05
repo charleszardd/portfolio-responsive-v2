@@ -1,8 +1,8 @@
 <template>
     <v-container class=" main-container px-5 px-lg-10" fluid>
-        <!-- <v-row class="pt-10 d-flex justify-end">
-            <Button icon="mdi-chat-question" class="bg-primary " text="Chat Kasenyashi" />
-        </v-row> -->
+      <div class="mt-8 d-flex justify-end sticky-thing" elevation="10">
+        <v-icon class="text-grey-lighten-2 cursor-pointer">mdi-robot-outline</v-icon>
+      </div>
         <v-row class="items">
         
             <v-col class="hero-container">
@@ -33,9 +33,24 @@ const profile = {
     justify-content: center;
     align-items: center;
 
-
 }
-.bg-img{
- 
+.sticky-thing{
+    position: fixed;
+    top: 60px;
+    right: 40px;
+    z-index: 1000;
+}
+@media (max-width: 960px) {
+  .sticky-thing {
+    top: 50px;
+    right: 20px;
+  }
+}
+
+@media (max-width: 600px) {
+  .sticky-thing {
+    top: 50px;
+    right: 24px;
+  }
 }
 </style>
