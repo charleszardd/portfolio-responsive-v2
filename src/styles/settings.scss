@@ -1,0 +1,35 @@
+/**
+ * src/styles/settings.scss
+ *
+ * Configures SASS variables and Vuetify overwrites
+ */
+
+// https://vuetifyjs.com/features/sass-variables/`
+// @use 'vuetify/settings' with (
+//   $color-pack: false
+// );
+
+.custom-font{
+    font-family: 'Poppins', sans-serif;
+
+    h1, h2, h3, h4, h5, h6, p, span, a, div{
+        font-family: inherit;
+    }
+    
+    p{
+        margin-bottom: 1em;
+        line-height: 1.7;
+    }
+}
+.hero-font{
+    font-family: 'Uncial Antiqua', serif;
+}
+.btn{
+    text-transform: none!important;
+}
+.custom-radius{
+    border-radius: 15px!important;
+}
+.button-radius{
+    border-radius: 5px!important;
+}
