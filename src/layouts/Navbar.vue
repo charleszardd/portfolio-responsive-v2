@@ -2,7 +2,7 @@
     <v-container class="custom-font" fluid>
         <v-app-bar class="container px-0 px-lg-5" app>
             <v-app-bar-nav-icon v-if="$vuetify.display.smAndDown" @click="menu = !menu"></v-app-bar-nav-icon>
-            <span class="text-title text-h6 font-weight-bold">My Portfolio</span>
+            <span class="pl-5 text-h6 font-weight-bold">My Portfolio</span>
             <v-spacer></v-spacer>
             <v-btn v-if="$vuetify.display.mdAndUp" text>About</v-btn>
             <v-btn v-if="$vuetify.display.mdAndUp" text>Projects</v-btn>

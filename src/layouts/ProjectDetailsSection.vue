@@ -105,7 +105,7 @@ const projects = ref([
     img: "/quiz studio_ss.png",
     title: "Quiz Studio CMS",
     description:
-      "This backend management system, similar to the Quizizz website but focused solely on administrators, allows admins to create, update, and delete quizzes, track participants' scores, and manage user activity. While it handles all quiz functionalities for admins, it is designed to be paired with a frontend interface for users to answer the quizzes, delivering an engaging and results-driven experience.",
+      "A Quizizz-like backend management system for admins to manage quizzes, track scores, and oversee user activity. Designed to integrate with a frontend for user participation.",
     languages: [
       { name: "mdi-language-php", color: "text-blue" },
       { name: "mdi-laravel", color: "text-red" },
@@ -126,7 +126,7 @@ const projects = ref([
     img: "/ai-chatbot ss.png",
     title: "Personalized Japanese Actress Chatbot AI",
     description:
-      "A specialized chatbot AI powered by Gemini API, designed to provide accurate and engaging answers about Japanese actresses. Fully personalized and trained on curated data, it ensures responses are focused exclusively on the provided information for a unique, targeted user experience.",
+      "A Gemini API-powered chatbot AI, personalized to provide accurate and engaging answers about Japanese actresses using curated data.",
       languages: [
       { name: "mdi-vuejs", color: "text-green-lighten-1" },
       { name: "mdi-vuetify", color: "text-blue-lighten-2" },
@@ -147,7 +147,7 @@ const projects = ref([
     img: "/quickbites_ss.png",
     title: "QuickBites: Canteen Pre Order System",
     description:
-      "A pick-up order system designed for canteens, offering seamless online and cash payment options. It features an admin CMS that allows efficient management of customers, CRUD functionality for products, and tracking of order history. The system supports two admin roles: an Authority Admin, who can perform CRUD operations, and a Viewer Admin, who can only view the data.",
+      "A canteen pre-order system with online and cash payment options, featuring an admin CMS for customer management, product CRUD operations, and order tracking. It includes two admin roles: Authority Admin (full access) and Viewer Admin (view-only).",
       languages: [
       { name: "mdi-language-php", color: "text-blue" },
       { name: "mdi-laravel", color: "text-red" },

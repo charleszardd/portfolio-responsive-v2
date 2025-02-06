@@ -2,7 +2,7 @@
     <v-container class="bg-steam mt-5 mt-lg-10 px-5 px-lg-10 grid-container" fluid>
         <v-row>
             <v-col class="about-container">
-                <v-col class="px-0 d-flex flex-column flex-lg-row">
+                <v-col class="px-0 d-flex flex-column flex-lg-row align-center">
                     <div class="about-details" data-aos="fade-right" data-aos-duration="2000">
                         
                         <span  class="custom-font mb-lg-5 mb-5 text-h6 d-block text-md-h5 text-lg-h4">Who am I? </span>
@@ -18,7 +18,7 @@
                         </div>
                     </div>
                     <div data-aos="fade-left" data-aos-duration="2000" class="slogan-details w-100 mt-10 mt-lg-0 w-lg-100">
-                        <span class="text-h4 text-yellow text-lg-h2 slogan-font">
+                        <span class="text-h1 text-md-h4 text-yellow text-lg-h2 slogan slogan-font">
                             ❝ Fuel your hunger for growth with the same passion you have for food. ❞
                         </span>
                     </div>
@@ -89,17 +89,32 @@ onMounted(() => {
     flex-direction: column;
     justify-content: center;
     z-index: 2;
+    align-content: center;
+    align-items: center;
 }
-@media (max-width: 600px) {
-  .about-details {
-    padding-right: 0px;
 
-  }
-}
 @media (max-width: 1200px) {
   .about-details {
     padding-right: 0px;
+  }
 
+}
+@media (max-width: 1400px) {
+  .about-details {
+    padding-right: 10em;
+  }
+  .slogan{
+    font-size: 3rem!important;
+  }
+
+}
+
+@media (max-width: 600px) {
+  .about-details {
+    padding-right: 0px;
+  }
+  .slogan{
+    font-size: 2rem!important;
   }
 }
 .bg-steam{
