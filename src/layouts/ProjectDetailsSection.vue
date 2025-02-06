@@ -10,11 +10,11 @@
 
         <v-row class="align-center mt-10 mb-5 px-3">
           <v-btn @click="prevSlide" class="blur-btn px-0" height="100" size="small">
-            <v-icon class="text-h2">mdi-chevron-left</v-icon>
+            <v-icon class="btn-text text-h2">mdi-chevron-left</v-icon>
           </v-btn>
 
           <v-col class="d-flex justify-center">
-            <v-card elevation="10" height="400px" max-width="700" class="w-50 w-lg-66 mx-auto">
+            <v-card elevation="10" height="400px" max-width="700" class="card-img w-50 w-lg-66 mx-auto">
               <img height="400px" :src="projects[currentIndex].img" cover />
             </v-card>
 
@@ -32,7 +32,7 @@
                   v-for="(language, index) in projects[currentIndex].languages"
                   :key="index"
                 >
-                  <v-btn size="small" elevation="10" class="text-h6 bg-blue-grey-darken-4">
+                  <v-chip elevation="10" class="text-h6">
                     <v-icon
                       :class="language.color"
                       v-if="language.name.startsWith('mdi-')"
@@ -41,7 +41,7 @@
                     >
                     <span v-else>{{ language.color }}</span>
                 
-                  </v-btn>
+                  </v-chip>
                 </v-col>
               </v-row>
 
@@ -49,7 +49,7 @@
                 <v-col
                   v-for="(link, index) in projects[currentIndex].links"
                   :key="index"
-                  class="pb-0 d-flex align-center justify-space-between cursor-pointer"
+                  class="pb-0 site-section d-flex align-center justify-space-between cursor-pointer"
                 >
                   <span
                     @click="goToLink(link.websiteLink)"
@@ -67,8 +67,8 @@
             </div>
           </v-col>
 
-          <v-btn @click="nextSlide" size="small" height="100" class="blue-btn px-0">
-            <v-icon class="text-h2">mdi-chevron-right</v-icon>
+          <v-btn @click="nextSlide" size="small" height="100" class="blur-btn px-0">
+            <v-icon class="btn-text text-h2">mdi-chevron-right</v-icon>
           </v-btn>
         </v-row>
 
@@ -193,10 +193,52 @@ const goToSlide = (index) => {
 <style scoped>
 .bg-steam {
   background-color: #171a21;
+  position: relative;
+}
+.site-section{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin-bottom: 10px;
 }
 .text-link:hover {
   text-decoration: underline;
   transition: all 0.7s ease-in-out;
 }
 
+
+
+@media screen and (max-width: 600px) {
+  .blur-btn {
+    width: 20px!important;
+    height: auto !important;
+  }
+  .btn-text {
+    font-size: 2rem!important;
+  }
+  .bg-steam{
+    display: none!important;
+  }
+  
+}
+
+@media (max-width: 1150px) {
+     img{
+      height: auto!important;
+      display: flex;
+      justify-content: center;
+      width: 100%;
+      aspect-ratio: 16/9;
+      background-size: cover;
+    }
+    .card-img{
+      width: 100%!important;
+      height: auto!important;
+    }
+    .bg-steam{
+      display: none!important;
+    }
+
+}
 </style>

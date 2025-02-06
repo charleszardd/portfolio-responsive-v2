@@ -82,8 +82,15 @@ const imageWidth = computed(() => (mdAndUp.value ? "26" : "34"));
 }
 @media (max-width: 1000px) {
   .image-width {
+    width:  32px;
+
+  } 
+}
+@media (max-width: 1100px) {
+  .image-width {
     width:  34px;
 
   }
 }
+
 </style>
