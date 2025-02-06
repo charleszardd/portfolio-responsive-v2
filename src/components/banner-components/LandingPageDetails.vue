@@ -6,7 +6,6 @@
         <v-row class="items">
         
             <v-col class="hero-container">
-                <div class="bg-img"></div>
                 <h1 class="text-h5 text-yellow text-lg-h2 hero-font font-weight-bold">{{profile.name}}</h1>
                 <p class="custom-font text-grey-lighten-2 mt-3 mt-lg-5 text-h6">{{profile.role}}</p>
             </v-col>
@@ -44,6 +43,12 @@ const profile = {
   .sticky-thing {
     top: 50px;
     right: 20px;
+  }
+}
+@media (max-width: 1200px) {
+  .sticky-thing {
+    top: 60px;
+    right: 24px;
   }
 }
 

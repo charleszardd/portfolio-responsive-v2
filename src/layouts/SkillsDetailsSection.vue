@@ -1,7 +1,7 @@
 <template>
   <v-container class="custom-font mt-5 mt-lg-10 px-5 px-lg-10" fluid>
     <v-row class="">
-      <v-col class="text-center" cols="12" lg="12">
+      <v-col data-aos="fade-up" data-aos-duration="3000" class="text-center" cols="12" lg="12">
         <h1
           class="mb-lg-5 mt-lg-3 mb-md-2 mb-2 text-h6 font-weight-bold text-md-h5 text-lg-h4"
         >
@@ -31,8 +31,8 @@
               >
               
               <img
-                class="py-0 py-lg-1 py-md-1"
-                :width="imageWidth"
+                class="image-width py-0 py-lg-1 py-md-1"
+                :width="imageWidth ? '40': '50'"
                 align="center"
                 v-else
                 :src="icon.image"
@@ -67,8 +67,23 @@ const icons = [
   { name: "mdi-git", color: "text-red-darken-1", label: "Git" },
   { name: "mdi-github", label: "Github" },
   { image: "/postman.svg", color: "primary", label: "Postman" },
-  { name: "mdi-triangle", text: 'Vercel', color: "primary", label: "Vercel" },
+  { name: "mdi-triangle", color: "primary", label: "Vercel" },
+  { name: "mdi-microsoft-visual-studio", color: "text-blue-lighten-1", label: "Visual Studio" },
 ];
 
-const imageWidth = computed(() => (mdAndUp.value ? "40" : "34"));
+const imageWidth = computed(() => (mdAndUp.value ? "26" : "34"));
 </script>
+<style scoped>
+ @media (max-width: 700px) {
+  .image-width {
+    width:  34px;
+
+  }
+}
+@media (max-width: 1000px) {
+  .image-width {
+    width:  34px;
+
+  }
+}
+</style>
