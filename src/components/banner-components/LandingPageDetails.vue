@@ -48,8 +48,8 @@ onMounted(() => {
   background: linear-gradient(to left ,#171a21, #1b2838 );
 }
 .profile{
-  width: 150px;
-  height: 150px;
+  width: 200px;
+  height: 200px;
   background-color: #272727;
   border: 2px solid grey;
 }
@@ -102,6 +102,16 @@ onMounted(() => {
     top: 60px;
     right: 24px;
   }
+  
+}
+
+@media (max-width: 1400px) {
+  .profile{
+  width: 150px;
+  height: 150px;
+  background-color: #272727;
+  border: 2px solid grey;
+}
 }
 
 @media (max-width: 600px) {
