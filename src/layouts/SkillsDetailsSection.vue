@@ -21,7 +21,7 @@
             :key="icon"
           >
             <v-card
-              class="bg-grey-darken-4 pa-1 pa-lg-2 mr-1 mr-lg-1 mb-1 mb-lg-2 rounded-lg"
+              class="bg-card pa-1 pa-lg-2 mr-1 mr-lg-1 mb-1 mb-lg-2 rounded-lg"
               elevation="10"
             >
               <v-icon
@@ -74,6 +74,9 @@ const icons = [
 const imageWidth = computed(() => (mdAndUp.value ? "26" : "34"));
 </script>
 <style scoped>
+.bg-card{
+  background-color: 		#2b2d31!important;
+}
  @media (max-width: 700px) {
   .image-width {
     width:  34px;

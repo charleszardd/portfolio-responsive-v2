@@ -7,11 +7,11 @@
         </h1>
 
         <v-row class="align-center mt-10 mb-5 px-3">
-          <v-btn @click="prevSlide" class="blur-btn px-0" height="100" size="small">
+          <v-btn @click="prevSlide" class="blur-btn1 px-0" height="150" size="small">
             <v-icon class="btn-text text-h2">mdi-chevron-left</v-icon>
           </v-btn>
 
-          <v-col class="d-flex justify-center">
+          <v-col class="d-flex justify-center px-0">
             <v-card elevation="10" height="400px" max-width="700" class="card-img w-50 w-lg-66 mx-auto">
               <img height="400px" :src="projects[currentIndex].img" cover />
             </v-card>
@@ -41,7 +41,7 @@
             </div>
           </v-col>
 
-          <v-btn @click="nextSlide" size="small" height="100" class="blur-btn px-0">
+          <v-btn @click="nextSlide" size="small" height="150" class="blur-btn2 px-0 ">
             <v-icon class="btn-text text-h2">mdi-chevron-right</v-icon>
           </v-btn>
         </v-row>
@@ -145,9 +145,28 @@ const goToSlide = (index) => {
 
 <style scoped>
 .bg-steam {
-  background-color: #171a21;
+  background-color: #1b2838;
   position: relative;
+  
 }
+.card-img {
+  background: rgba(0, 0, 0, 0.4) !important;
+  border-radius: 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.card-img::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.1);
+  z-index: 1;
+}
+
 .site-section{
   position: absolute;
   bottom: 0;
@@ -158,6 +177,14 @@ const goToSlide = (index) => {
 .text-link:hover {
   text-decoration: underline;
   transition: all 0.7s ease-in-out;
+}
+.blur-btn1{
+  border-radius:  20px 0 0 20px ;
+  background: linear-gradient(to left ,#171a21, #1b2838 );
+}
+.blur-btn2{
+  border-radius:  0 20px 20px 0 ;
+  background: linear-gradient(to left, #1b2838, #171a21);
 }
 
 @media screen and (max-width: 600px) {

@@ -10,7 +10,7 @@
 import Navbar from '@/layouts/Navbar.vue';
 </script>
 <style scoped>
-/* .bg-color{
-    background-color: #f0EAD6;
-} */
+.bg-color{
+    background-color: #171a21;
+}
 </style>

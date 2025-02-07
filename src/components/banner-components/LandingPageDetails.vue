@@ -1,21 +1,30 @@
 <template>
   <v-container class="main-container px-5 px-lg-10" fluid>
     <div class="mt-8 d-flex justify-end sticky-thing" elevation="10">
-      <v-icon class="text-yellow cursor-pointer">mdi-robot-outline</v-icon>
+      <v-icon class="icon-color cursor-pointer">mdi-robot-outline</v-icon>
     </div>
     <v-row class="items">
       <v-col v-if="loading" class="hero-container">
         <Loader />
       </v-col>
       <v-col v-else class="hero-container">
-        <h1 class="text-h5 text-yellow text-lg-h2 hero-font font-weight-bold">
+        <div class="profile mb-10 d-flex justify-center align-center">
+          <v-icon class="text-h1">mdi-help</v-icon>
+        </div>
+        <h1 class="text-h5 elevated-text text-color text-lg-h2 hero-font font-weight-bold">
           {{ profile.name }}
         </h1>
         <p class="custom-font text-grey-lighten-2 mt-3 mt-lg-5 text-h6">
           {{ profile.role }}
         </p>
+        <div class="mt-5">
+        <Button elevation="10" width="200" height="45" class="btn-1 mr-5" text="Download CV" icon="mdi-tray-arrow-down"/>
+        <Button elevation="10" width="200" height="45" class="btn-2" text="Learn more" />
+      </div>
       </v-col>
+      
     </v-row>
+
   </v-container>
 </template>
 <script setup>
@@ -36,10 +45,35 @@ onMounted(() => {
 </script>
 <style scoped>
 .main-container {
-  /* color: #212121; */
+  background: linear-gradient(to left ,#171a21, #1b2838 );
+}
+.profile{
+  width: 150px;
+  height: 150px;
+  background-color: #272727;
+  border: 2px solid grey;
+}
+.btn-1{
+  border: 2px solid #66c0f4;
+  background-color: transparent;
+  color: #66c0f4;
+}
+.btn-2{
+  background: linear-gradient(to left ,#3268e6, #66c0f4 );
 }
 .items {
   height: 100vh;
+}
+.icon-color{
+  color: #66c0f4;
+}
+.elevated-text {
+  color: white; 
+  font-size: 2rem;
+  font-weight: bold;
+  text-shadow: 
+    0px 2px 4px rgba(0, 0, 0, 1), 
+    0px 4px 8px rgba(0, 0, 0, 1);  
 }
 .hero-container {
   position: relative;

@@ -17,11 +17,9 @@ const menu = ref(false);
 </script>
 
 <style scoped>
-/* .container{
-    background-color: #f0EAD6!important;
-    color: #212121;
+.container{
+    background-color: #171a21!important;
+
 }
-.text-title{
-    color: #212121!important;
-} */
+
 </style>

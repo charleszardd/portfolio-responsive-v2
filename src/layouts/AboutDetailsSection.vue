@@ -1,5 +1,5 @@
 <template>
-    <v-container class="bg-steam mt-5 mt-lg-10 px-5 px-lg-10 grid-container" fluid>
+    <v-container class="bg-steam  px-5 px-lg-10 grid-container" fluid>
         <v-row>
             <v-col class="about-container">
                 <v-col class="px-0 d-flex flex-column flex-lg-row align-center">
@@ -42,7 +42,7 @@ onMounted(() => {
 }
 .grid-container {
     position: relative;
-    background-color: #263238; 
+      background: linear-gradient(to left ,#171a21, #1b2838 );
     overflow: hidden;
 }
 
@@ -93,15 +93,10 @@ onMounted(() => {
     align-items: center;
 }
 
-@media (max-width: 1200px) {
-  .about-details {
-    padding-right: 0px;
-  }
 
-}
 @media (max-width: 1400px) {
   .about-details {
-    padding-right: 10em;
+    padding-right: 5em;
   }
   .slogan{
     font-size: 3rem!important;
@@ -117,7 +112,19 @@ onMounted(() => {
     font-size: 2rem!important;
   }
 }
+@media (max-width: 1000px) {
+    .about-details{
+        padding-right: 0px;
+    }
+}
+@media (max-width: 1200px) {
+  .about-details {
+    padding-right: 0px;
+  }
+
+}
 .bg-steam{
-    background-color: 	#171a21;
+    background-color: 	#1b2838;
+
 }
 </style>

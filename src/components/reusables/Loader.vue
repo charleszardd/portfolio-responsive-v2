@@ -3,7 +3,7 @@
           indeterminate
           size="80"
           width="4"
-          color="yellow"
+          color="#66c0f4"
           class="layer-1"
         ></v-progress-circular>
 
@@ -19,7 +19,7 @@
           indeterminate
           size="40"
           width="2"
-          color="yellow"
+          color="#66c0f4"
           class="layer-3"
         ></v-progress-circular>
 </template>
