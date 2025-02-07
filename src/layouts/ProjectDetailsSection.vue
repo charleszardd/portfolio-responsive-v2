@@ -2,9 +2,7 @@
   <v-container class="custom-font mt-5 mb-10 mt-lg-10 px-5 px-lg-10" fluid>
     <v-row>
       <v-col cols="12">
-        <h1
-          class="mb-lg-5 mb-md-2 mb-1 text-center text-h6 font-weight-bold text-md-h5 text-lg-h4"
-        >
+        <h1 class="mb-lg-5 mb-md-2 mb-1 text-center text-h6 font-weight-bold text-md-h5 text-lg-h4">
           Projects
         </h1>
 
@@ -18,50 +16,26 @@
               <img height="400px" :src="projects[currentIndex].img" cover />
             </v-card>
 
-            <div elevation="10" class="w-50 bg-steam pa-2 px-4 d-flex flex-column">
-              <span class="text-h5 mt-2 font-weight-bold">{{
-                projects[currentIndex].title
-              }}</span>
-              <p class="text-title text-wrap mt-5">
-                {{ projects[currentIndex].description }}
-              </p>
+            <div class="w-50 bg-steam pa-2 px-4 d-flex flex-column">
+              <span class="text-h5 mt-2 font-weight-bold">{{ projects[currentIndex].title }}</span>
+              <p class="text-title text-grey-lighten-1 text-wrap mt-5">{{ projects[currentIndex].description }}</p>
 
               <v-row>
-                <v-col
-                  cols="auto"
-                  v-for="(language, index) in projects[currentIndex].languages"
-                  :key="index"
-                >
+                <v-col cols="auto" v-for="(language, index) in projects[currentIndex].languages" :key="index">
                   <v-chip elevation="10" class="text-h6">
-                    <v-icon
-                      :class="language.color"
-                      v-if="language.name.startsWith('mdi-')"
-                      left
-                      >{{ language.name }}</v-icon
-                    >
+                    <v-icon :class="language.color" v-if="language.name.startsWith('mdi-')" left>{{ language.name }}</v-icon>
                     <span v-else>{{ language.color }}</span>
-                
                   </v-chip>
                 </v-col>
               </v-row>
 
               <v-row class="py-0 px-0">
-                <v-col
-                  v-for="(link, index) in projects[currentIndex].links"
-                  :key="index"
-                  class="pb-0 site-section d-flex align-center justify-space-between cursor-pointer"
-                >
-                  <span
-                    @click="goToLink(link.websiteLink)"
-                    class="text-link text-subtitle-2"
-                    >{{ link.text }}
-                    <v-icon class="ml-2">{{ link.icon }}</v-icon></span
-                  >
-                  <v-icon
-                    @click="goToLink(link.repositoryLink)"
-                    class="text-h4"
-                    >{{ link.github }}</v-icon
-                  >
+                <v-col v-for="(link, index) in projects[currentIndex].links" :key="index" class="pb-0 site-section d-flex align-center justify-space-between cursor-pointer">
+                  <span @click="goToLink(link.websiteLink)" class="text-link text-subtitle-2">
+                    {{ link.text }}
+                    <v-icon class="ml-2">{{ link.icon }}</v-icon>
+                  </span>
+                  <v-icon @click="goToLink(link.repositoryLink)" class="text-h4">{{ link.github }}</v-icon>
                 </v-col>
               </v-row>
             </div>
@@ -73,21 +47,8 @@
         </v-row>
 
         <v-row justify="center" class="mt-3">
-          <v-icon
-            class="mr-2"
-            v-for="(project, index) in projects"
-            :key="index"
-            @click="goToSlide(index)"
-            :class="{ 'active-dot': index === currentIndex }"
-            icon
-          >
-            <v-icon
-              size="small"
-              :color="
-                index === currentIndex ? 'grey-lighten-2' : 'grey-darken-2'
-              "
-              >mdi-rectangle</v-icon
-            >
+          <v-icon class="mr-2" v-for="(project, index) in projects" :key="index" @click="goToSlide(index)" :class="{ 'active-dot': index === currentIndex }" icon>
+            <v-icon size="" height="" :color="index === currentIndex ? 'grey-lighten-2' : 'grey-darken-2'">mdi-rectangle</v-icon>
           </v-icon>
         </v-row>
       </v-col>
@@ -170,19 +131,11 @@ const goToLink = (url) => {
 };
 
 const nextSlide = () => {
-  if (currentIndex.value < projects.value.length - 1) {
-    currentIndex.value++;
-  } else if (currentIndex.value === projects.value.length - 1) {
-    currentIndex.value = 0;
-  }
+  currentIndex.value = (currentIndex.value + 1) % projects.value.length;
 };
 
 const prevSlide = () => {
-  if (currentIndex.value > 0) {
-    currentIndex.value--;
-  } else if (currentIndex.value < 1) {
-    currentIndex.value = projects.value.length;
-  }
+  currentIndex.value = (currentIndex.value - 1 + projects.value.length) % projects.value.length;
 };
 
 const goToSlide = (index) => {
@@ -206,8 +159,6 @@ const goToSlide = (index) => {
   text-decoration: underline;
   transition: all 0.7s ease-in-out;
 }
-
-
 
 @media screen and (max-width: 600px) {
   .blur-btn {
