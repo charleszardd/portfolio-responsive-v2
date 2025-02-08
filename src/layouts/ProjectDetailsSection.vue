@@ -2,7 +2,7 @@
   <v-container class="h-screen  mt-5 px-5 px-lg-10" fluid>
     <v-row>
       <v-col cols="12">
-        <h1 class="mb-lg-5 mb-md-2 hero-font text-center text-h6 font-weight-bold text-md-h5 text-lg-h3">
+        <h1 class="elevated-text mb-lg-5 mb-md-2 hero-font text-center text-h4 font-weight-bold text-md-h3 text-lg-h3">
           Projects
         </h1>
 
@@ -154,6 +154,14 @@ const goToSlide = (index) => {
   position: relative;
   
 }
+.elevated-text {
+  color: white; 
+  font-size: 2rem;
+  font-weight: bold;
+  text-shadow: 
+    0px 2px 4px rgba(0, 0, 0, 1), 
+    0px 4px 8px rgba(0, 0, 0, 1);  
+}
 .card-img {
   background: rgba(0, 0, 0, 0.4) !important;
   border-radius: 0;
@@ -193,19 +201,23 @@ const goToSlide = (index) => {
   background: linear-gradient(to left, #1b2838, #171a21);
 }
 
-@media screen and (max-width: 600px) {
-  .blur-btn {
-    width: 20px!important;
-    height: auto !important;
+@media (max-width: 600px) {
+  .blur-btn1, .blur-btn2 {
+  
+    height: 100px !important;
   }
   .btn-text {
     font-size: 2rem!important;
   }
+  .card-img{
+    position: relative;
+  }
   .bg-steam{
-    display: none!important;
+    position: absolute;
   }
   
 }
+
 
 @media (max-width: 1150px) {
      img{
@@ -221,7 +233,7 @@ const goToSlide = (index) => {
       height: auto!important;
     }
     .bg-steam{
-      display: none!important;
+      display: none !important;;
     }
 
 }

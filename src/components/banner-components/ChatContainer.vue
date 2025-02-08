@@ -1,23 +1,24 @@
-<!-- <template>
+<template>
 
-        <v-row>
+        <v-row class="chat-section">
             <v-col>
                 <v-card
       class="chat-container mt-10 card-radius border-sm bg-grey-lighten-3"
       elevation="10"
     >
-      <div class="header">
-        <h4 class="header-text">Ask Kasenyashi about me</h4>
+      <div class="header justify-end">
+  
+        <Button flat class="close-btn text-h6 text-grey-lighten-1" :addMargin="false" @click="$emit('close-chat')" icon="mdi-close"/>
       </div>
       <div class="messages-container">
-        <div class="messages-content">
+        <div class="messages-content ">
 
-          <div class="welcome-message message-wrapper justify-start">
-            <div class="model-avatar">
-              <img src="/bot.png" alt="AI Assistant" />
-            </div>
-            <div class="message bot-message">
-              <p class="message-text">Hello! I'm here to tell you about the owner of this portfolio. Feel free to ask me anything about his experience, skills, or projects.</p>
+          <div class="welcome-message align-center message-wrapper justify-center">
+            
+            <div v-if="chatHistory.length < 1" class="d-flex custom-font flex-column align-center">
+                <v-icon class="text-grey-lighten-1 text-h1">mdi-robot-outline</v-icon>
+                <span class="mt-3 text-grey-lighten-1 text-h5 font-weight-bold">Ask Kasenyashi about me</span>
+                <p class="px-5 mt-5 text-center text-grey-lighten-1">Kasenyashi is powered by the Gemini AI API. While it can provide insights about me, some details may be limited. Feel free to ask!</p>
             </div>
           </div>
 
@@ -31,7 +32,7 @@
               v-if="message.role === 'model'"
               class="model-avatar"
             >
-              <img src="/bot.png" alt="AI Assistant" />
+               <v-icon class="text-h5 text-blue-lighten-1">mdi-robot-outline</v-icon>
             </div>
             <div
               class="message"
@@ -48,16 +49,16 @@
       <div class="input-container">
         <div class="input-wrapper d-flex px-4 pb-2" align="center">
           <v-text-field
+          class="text-field"
             v-model="userMessage"
-            variant="outlined"
-            label="Type your message..."
+            variant="border"
             hide-details
             density="comfortable"
             :disabled="isLoading"
             @keyup.enter="sendMessage"
           ></v-text-field>
   
-          <v-btn @click="sendMessage" height="48" width="30" class="ml-2"
+          <v-btn elevation="10" @click="sendMessage" height="48" width="30" class="send-btn ml-2"
             ><v-icon>mdi-send</v-icon></v-btn
           >
         </div>
@@ -109,12 +110,21 @@
   </script>
   
   <style scoped>
+  .close-btn{
+    background-color: #171a21!important;
+  }
+  .chat-section{
+    display: flex;
+    align-items: center;
+  }
+  .send-btn{
+    background: linear-gradient(to left ,#3268e6, #66c0f4 );
+  }
   .loading-indicator{
     position: absolute;
     bottom: 30px;
     left: 30px;
     margin-bottom: 3rem;
-    background-color: #212121;
     color: white;
     padding: 5px ;
     padding-top: 0;
@@ -124,17 +134,29 @@
     z-index: 20;
   }
   .chat-container {
-    height: 420px;
-    width: 600px;
-    position: relative;
+    height: 600px;
+    width: 500px;
+    max-width: 1000px;
+    position: fixed;
+    border: 2px solid #171a21;
+    right: 0;
+    top: 0;
+    z-index: 1000;
+    background-color: #171a21!important;
     display: flex;
     flex-direction: column;
+    transition: transform 0.3s ease-in-out;
   }
   
   .header {
-    background-color: #212121;
-    flex-shrink: 0;
-  }
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  background-color: #171a21!important;
+  border-bottom: 2px solid #1b2838;
+  color: white;
+}
   
   .header-text {
     padding: 10px;
@@ -149,6 +171,8 @@
     padding-bottom: 0;
     margin-bottom: 64px;
     position: relative;
+    height: calc(100vh - 140px);
+    border: 1px solid #171a21;
   }
   
   .messages-content {
@@ -170,23 +194,6 @@
     opacity: 0.9;
   }
   
-  .model-avatar {
-    width: 32px;
-    height: auto;
-    border-radius: 50%;
-    overflow: hidden;
-    border: 1px solid #e5e7eb;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-.model-avatar img {
-  width: 100%;
-  height: auto;
-  object-fit: contain;
-}
-  
   .message {
     max-width: calc(70% - 48px);
     padding: 0.75rem 1rem;
@@ -196,7 +203,7 @@
   }
   
   .user-message {
-    background-color: #212121;
+    background: linear-gradient(to left ,#3268e6, #66c0f4 );
     color: white;
   }
   
@@ -217,9 +224,10 @@
     bottom: 0;
     left: 0;
     right: 0;
-    background-color: #fff;
-    border-top: 1px solid #e5e7eb;
+    background-color: #171a21;
+    border-top: 2px solid #1b2838;
     padding: 0.5rem 0;
+    color: white;
     z-index: 10;
   }
   
@@ -227,26 +235,21 @@
     width: 100%;
     max-width: 600px;
     margin: 0 auto;
+
   }
-  
+  .text-field{
+    border: 2px solid rgb(2, 2, 2);
+
+  }
   .messages-container {
     scrollbar-width: thin;
-    scrollbar-color: #cbd5e0 #f8f9fa;
+  
   }
   
   .messages-container::-webkit-scrollbar {
     width: 6px;
   }
-  
-  .messages-container::-webkit-scrollbar-track {
-    background: #f8f9fa;
-  }
-  
-  .messages-container::-webkit-scrollbar-thumb {
-    background-color: #cbd5e0;
-    border-radius: 3px;
-  }
-  
+
   .justify-start {
     justify-content: flex-start;
   }
@@ -254,4 +257,4 @@
   .justify-end {
     justify-content: flex-end;
   }
-  </style> -->
+  </style>

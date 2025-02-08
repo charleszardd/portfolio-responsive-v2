@@ -6,7 +6,7 @@
                     <div class="about-details" data-aos="fade-right" data-aos-duration="2000">
                         
                         <span  class="custom-font mb-lg-5 mb-5 text-h6 d-block text-md-h5 text-lg-h4">Who am I? </span>
-                        <h3 class="hero-font font-color text-h4 text-md-h3 mb-4 text-lg-h2 font-weight-bold">
+                        <h3 class="hero-font elevated-text font-color text-h4 text-md-h3 mb-4 text-lg-h2 font-weight-bold">
                             I'm Charles Caseñas
                         </h3>
                         <div class="w-100 mr-10">
@@ -74,7 +74,14 @@ onMounted(() => {
     );
     z-index: 0;
 }
-
+.elevated-text {
+  color: #66c0f4; 
+  font-size: 2rem;
+  font-weight: bold;
+  text-shadow: 
+    0px 2px 4px rgba(0, 0, 0, 1), 
+    0px 4px 8px rgba(0, 0, 0, 1);  
+}
 .grid-container::after {
     content: "";
     position: absolute;

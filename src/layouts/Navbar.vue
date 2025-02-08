@@ -10,7 +10,7 @@
             <v-spacer></v-spacer>
             <div class="d-flex  flex-column">
             <span class="pr-5 text-subtitle-2 text-grey-lighten-1"><v-icon class="mr-2">mdi-email</v-icon>casenascharles@gmail.com</span>
-            <span class="pr-5 text-subtitle-2 text-grey-lighten-1"><v-icon class="mr-2">mdi-phone</v-icon><span class="text-blue-lighten-2 ">+639 </span>638623607</span>
+            <span class="pr-5 text-subtitle-2 text-grey-lighten-1"><v-icon class="mr-2">mdi-phone</v-icon><span class="text-blue-lighten-3 ">+639 </span>638623607</span>
         </div>
         </v-app-bar>
     </v-container>

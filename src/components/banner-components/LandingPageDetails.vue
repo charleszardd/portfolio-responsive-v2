@@ -1,7 +1,7 @@
 <template id="homeSection">
   <v-container class="main-container px-5 px-lg-10" fluid>
     <div class="mt-8 d-flex justify-end sticky-thing" elevation="10">
-      <v-icon class="icon-color cursor-pointer">mdi-robot-outline</v-icon>
+      <v-btn @click="$emit('open-chat')" icon color="#171a21" flat ><v-icon class="icon-color cursor-pointer">mdi-robot-outline</v-icon></v-btn>
     </div>
     <v-row class="items">
       <v-col v-if="loading" class="hero-container">
@@ -15,11 +15,11 @@
         <h1 class="text-h5 elevated-text text-color text-lg-h3 hero-font font-weight-bold">
           {{ profile.name }}
         </h1>
-        <p class="custom-font text-grey-lighten-2 mt-3 mt-lg-5 text-h6">
-          {{ profile.role }}
+        <p class="custom-font text-grey-lighten-2 mt-3 mt-lg-5 text-subtitle-1 text-lg-h6">
+          {{ profile.description }}
         </p>
         <div class="mt-5 btn-group">
-        <Button  elevation="10" width="200" height="45" class="btn-1 mr-5" text="Download CV" icon="mdi-tray-arrow-down"/>
+        <Button @click="generatePDF" :loading="buttonIsLoading"  elevation="10" width="200" height="45" class="btn-1 mr-5" text="Download CV" icon="mdi-tray-arrow-down"/>
         <Button @click="$emit('scroll-to-section', 'about')" elevation="10" width="200" height="45" class="btn-2" text="Learn more" />
       </div>
       </v-col>
@@ -30,12 +30,23 @@
 </template>
 <script setup>
 import { ref, onMounted } from "vue";
+import { generateCV } from "@/services/GenerateCV";
+
+const buttonIsLoading = ref(false);
+
+const generatePDF = () => {
+  buttonIsLoading.value = true;
+  setTimeout(() => {
+    generateCV(); 
+    buttonIsLoading.value = false;
+  }, 1000);
+};
 
 const loading = ref(true);
 
 const profile = {
   name: "Charles David P. Caseñas",
-  role: "Full-stack developer passionate about Laravel, Vue.js, and crafting seamless web experiences with modern design.",
+  description: "Full-stack developer passionate about Laravel, Vue.js, and crafting seamless web experiences with modern design.",
 };
 
 onMounted(() => {
