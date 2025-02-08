@@ -1,13 +1,13 @@
-<template>
-  <v-container class="custom-font mt-5 mt-lg-10 px-5 px-lg-10" fluid>
+<template id="skillsSection">
+  <v-container class="h-screen  mt-5 mt-lg-10 px-5 px-lg-10" fluid>
     <v-row class="">
       <v-col data-aos="fade-up" data-aos-duration="3000" class="text-center" cols="12" lg="12">
         <h1
-          class="mb-lg-5 mt-lg-3 mb-md-2 mb-2 text-h6 font-weight-bold text-md-h5 text-lg-h4"
+          class="mb-lg-5 mt-lg-3 mb-md-2 mb-2 hero-font text-h6 font-weight-bold text-md-h5 text-lg-h3"
         >
           Skills & Tools
         </h1>
-        <p class="text-subtitle-2 text-lg-subtitle-1 text-grey">
+        <p class="text-subtitle-2 custom-font text-lg-subtitle-1 text-grey">
           Here are the technical skills I've honed and the tools I've used
           throughout my experience.
         </p>
@@ -39,7 +39,7 @@
               />
             </v-card>
             <span
-              class="text-subtitle-2 text-lg-subtitle-1 d-none d-md-block d-lg-block"
+              class="text-subtitle-2 custom-font text-lg-subtitle-1 d-none d-md-block d-lg-block"
               >{{ icon.label }}</span
             >
           </v-col>
@@ -74,6 +74,10 @@ const icons = [
 const imageWidth = computed(() => (mdAndUp.value ? "26" : "34"));
 </script>
 <style scoped>
+.h-screen{
+  align-items: center;
+  display: flex;
+}
 .bg-card{
   background-color: 		#2b2d31!important;
 }

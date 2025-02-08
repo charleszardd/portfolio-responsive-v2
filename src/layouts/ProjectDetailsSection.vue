@@ -1,12 +1,12 @@
-<template>
-  <v-container class="custom-font mt-5 mb-10 mt-lg-10 px-5 px-lg-10" fluid>
+<template id="projectsSection">
+  <v-container class="h-screen  mt-5 px-5 px-lg-10" fluid>
     <v-row>
       <v-col cols="12">
-        <h1 class="mb-lg-5 mb-md-2 mb-1 text-center text-h6 font-weight-bold text-md-h5 text-lg-h4">
+        <h1 class="mb-lg-5 mb-md-2 hero-font text-center text-h6 font-weight-bold text-md-h5 text-lg-h3">
           Projects
         </h1>
 
-        <v-row class="align-center mt-10 mb-5 px-3">
+        <v-row class="align-center mt-5 mb-5 px-3">
           <v-btn @click="prevSlide" class="blur-btn1 px-0" height="150" size="small">
             <v-icon class="btn-text text-h2">mdi-chevron-left</v-icon>
           </v-btn>
@@ -16,7 +16,7 @@
               <img height="400px" :src="projects[currentIndex].img" cover />
             </v-card>
 
-            <div class="w-50 bg-steam pa-2 px-4 d-flex flex-column">
+            <div class="w-50 custom-font bg-steam pa-2 px-4 d-flex flex-column">
               <span class="text-h5 mt-2 font-weight-bold">{{ projects[currentIndex].title }}</span>
               <p class="text-title text-grey-lighten-1 text-wrap mt-5">{{ projects[currentIndex].description }}</p>
 
@@ -144,6 +144,11 @@ const goToSlide = (index) => {
 </script>
 
 <style scoped>
+.h-screen{
+  display: flex;
+  align-items: center;
+   background: linear-gradient(to left ,#171a21, #1b2838 );
+}
 .bg-steam {
   background-color: #1b2838;
   position: relative;
@@ -180,7 +185,8 @@ const goToSlide = (index) => {
 }
 .blur-btn1{
   border-radius:  20px 0 0 20px ;
-  background: linear-gradient(to left ,#171a21, #1b2838 );
+  /* background: linear-gradient(to left ,#171a21, #1b2838 ); */
+  background: linear-gradient(to left ,#1b2838, #171a21 );
 }
 .blur-btn2{
   border-radius:  0 20px 20px 0 ;
@@ -219,4 +225,5 @@ const goToSlide = (index) => {
     }
 
 }
+
 </style>

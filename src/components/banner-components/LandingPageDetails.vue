@@ -1,4 +1,4 @@
-<template>
+<template id="homeSection">
   <v-container class="main-container px-5 px-lg-10" fluid>
     <div class="mt-8 d-flex justify-end sticky-thing" elevation="10">
       <v-icon class="icon-color cursor-pointer">mdi-robot-outline</v-icon>
@@ -9,17 +9,18 @@
       </v-col>
       <v-col v-else class="hero-container">
         <div class="profile mb-10 d-flex justify-center align-center">
-          <v-icon class="text-h1">mdi-help</v-icon>
+          <img class="profile-img" src="/charles.png" alt="">
+          <!-- <v-icon class="text-h1">mdi-help</v-icon> -->
         </div>
-        <h1 class="text-h5 elevated-text text-color text-lg-h2 hero-font font-weight-bold">
+        <h1 class="text-h5 elevated-text text-color text-lg-h3 hero-font font-weight-bold">
           {{ profile.name }}
         </h1>
         <p class="custom-font text-grey-lighten-2 mt-3 mt-lg-5 text-h6">
           {{ profile.role }}
         </p>
-        <div class="mt-5">
-        <Button elevation="10" width="200" height="45" class="btn-1 mr-5" text="Download CV" icon="mdi-tray-arrow-down"/>
-        <Button elevation="10" width="200" height="45" class="btn-2" text="Learn more" />
+        <div class="mt-5 btn-group">
+        <Button  elevation="10" width="200" height="45" class="btn-1 mr-5" text="Download CV" icon="mdi-tray-arrow-down"/>
+        <Button @click="$emit('scroll-to-section', 'about')" elevation="10" width="200" height="45" class="btn-2" text="Learn more" />
       </div>
       </v-col>
       
@@ -34,7 +35,7 @@ const loading = ref(true);
 
 const profile = {
   name: "Charles David P. Caseñas",
-  role: "Fullsuck Developer",
+  role: "Full-stack developer passionate about Laravel, Vue.js, and crafting seamless web experiences with modern design.",
 };
 
 onMounted(() => {
@@ -51,7 +52,14 @@ onMounted(() => {
   width: 200px;
   height: 200px;
   background-color: #272727;
-  border: 2px solid grey;
+  border: 2px solid #66c0f4!important;
+  overflow: hidden;
+}
+.profile-img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+
 }
 .btn-1{
   border: 2px solid #66c0f4;
@@ -118,6 +126,14 @@ onMounted(() => {
   .sticky-thing {
     top: 50px;
     right: 24px;
+  }
+  .btn-group{
+    flex-direction: row;
+    display: flex;
+
+  }
+  .btn-1, .btn-2{
+    width: 150px!important;
   }
 }
 </style>
