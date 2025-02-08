@@ -51,8 +51,9 @@
           <v-text-field
           class="text-field"
             v-model="userMessage"
-            variant="border"
+            variant="outlined"
             hide-details
+            label="Type a message"
             density="comfortable"
             :disabled="isLoading"
             @keyup.enter="sendMessage"
@@ -238,7 +239,7 @@
 
   }
   .text-field{
-    border: 2px solid rgb(2, 2, 2);
+    border: 2px solid #1b2838;
 
   }
   .messages-container {
