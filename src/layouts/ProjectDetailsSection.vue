@@ -2,7 +2,7 @@
   <v-container class="h-screen  mt-5 px-5 px-lg-10" fluid>
     <v-row>
       <v-col cols="12">
-        <h1 class="elevated-text mb-lg-5 mb-md-2 hero-font text-center text-h4 font-weight-bold text-md-h3 text-lg-h3">
+        <h1 class="elevated-text mb-lg-5 mb-md-2 mb-10 hero-font text-center text-h4 font-weight-bold text-md-h3 text-lg-h3">
           Projects
         </h1>
 

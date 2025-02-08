@@ -3,11 +3,11 @@
     <v-row class="">
       <v-col data-aos="fade-up" data-aos-duration="3000" class="text-center" cols="12" lg="12">
         <h1
-          class="elevated-text mb-lg-5 mt-lg-3 mb-md-2 mb-2 hero-font text-h4 font-weight-bold text-md-h3 text-lg-h3"
+          class="elevated-text mb-lg-5 mt-lg-3 mb-md-2 mb-10 hero-font text-h4 font-weight-bold text-md-h3 text-lg-h3"
         >
           Skills & Tools
         </h1>
-        <p class="text-subtitle-2 custom-font text-lg-subtitle-1 text-grey-lighten-2">
+        <p class="text-subtitle-2 mb-5 mb-lg-0 custom-font text-lg-subtitle-1 text-grey-lighten-2">
           Here are the technical skills I've honed and the tools I've used
           throughout my experience.
         </p>

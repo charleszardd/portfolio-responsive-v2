@@ -135,7 +135,7 @@
     z-index: 20;
   }
   .chat-container {
-    height: 600px;
+    height: 740px;
     width: 500px;
     max-width: 1000px;
     position: fixed;
@@ -258,4 +258,28 @@
   .justify-end {
     justify-content: flex-end;
   }
+  @media (max-width: 1200px) {
+    .chat-container {
+    height: 400px;
+    
+  }
+}
+  @media (max-width: 1400px) {
+    .chat-container {
+    height: 600px;
+    
+  }
+}
+@media (max-width: 600px) {
+    .chat-container {
+    height: 805px;
+    width: 400px;
+    max-width: 400px;
+    overflow-x: hidden;
+    display: flex;
+    justify-content: center;
+
+  }
+}
+
   </style>
