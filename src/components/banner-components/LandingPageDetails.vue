@@ -170,7 +170,7 @@ onMounted(() => {
     width: auto !important;
   }
   .profile {
-    width: 100%;
+    width: 200px;
     height: 200px;
   }
   .profile-details {

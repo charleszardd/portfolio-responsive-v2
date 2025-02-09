@@ -14,7 +14,7 @@
                             I'm Charles Caseñas
                         </h3>
                         <div class="w-100">
-                            <p class="custom-font text-subtitle-2 text-md-subtitle-1 text-lg-subtitl-1 text-grey-lighten-4">
+                            <p class="custom-font text-subtitle-2 text-md-subtitle-1 text-lg-subtitle-1 text-grey-lighten-4">
                                 Wazzup 👋🏻, I’m a passionate Laravel and Vue.js developer dedicated to writing clean, efficient code and crafting seamless user experiences. With a strong foundation in frontend and backend development, I specialize in Vuetify, Tailwind CSS, and API integrations, always striving for modern, scalable solutions.
                                 <br /><br />
                                 Beyond coding, I thrive on learning new technologies, optimizing workflows, and collaborating with like-minded professionals. My dream in the next 5–10 years is to work remotely with top industry experts, continuously improving my skills while staying innovative and adaptable in the ever-evolving tech landscape.

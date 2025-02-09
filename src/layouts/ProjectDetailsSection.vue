@@ -1,5 +1,5 @@
 <template id="projectsSection">
-  <v-container class="h-screen  px-5 px-lg-10" fluid>
+  <v-container class="h-screen px-5 px-lg-10" fluid>
     <v-row>
       <v-col cols="12">
         <h1 class="elevated-text mb-lg-5 mb-md-2 mb-10 custom-font text-center text-h4 font-weight-bold text-md-h3 text-lg-h3">
@@ -193,7 +193,6 @@ const goToSlide = (index) => {
 }
 .blur-btn1{
   border-radius:  20px 0 0 20px ;
-  /* background: linear-gradient(to left ,#171a21, #1b2838 ); */
   background: linear-gradient(to left ,#1b2838, #171a21 );
 }
 .blur-btn2{

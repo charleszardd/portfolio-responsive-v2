@@ -81,6 +81,12 @@ export const sendMessageToAI = async (message) => {
                         parts: [{
                             text: "If the users just greet you, just answer them with greet and tell them what do they need to know about Charles. Dont ask too much questions and ask them just one but the most important of leading them to know about me."
                         }],
+                    },
+                    {
+                        role: "user",
+                        parts: [{
+                            text: "Once you've greeted the user, you dont have to greet him/her again and just answer their questions immediately and politely of course."
+                        }],
                     }
                 ],
             });

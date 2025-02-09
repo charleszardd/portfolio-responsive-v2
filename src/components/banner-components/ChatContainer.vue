@@ -170,7 +170,7 @@
     margin-bottom: 64px;
     position: relative;
     display: flex;
-    /* align-items: center; */
+    align-items: start;
     height: calc(100vh - 140px);
     border: 1px solid #171a21;
   }
