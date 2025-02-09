@@ -3,7 +3,7 @@
         <v-row class="chat-section">
             <v-col>
                 <v-card
-      class="chat-container mt-10 card-radius border-sm bg-grey-lighten-3"
+      class="chat-container  card-radius border-sm bg-grey-lighten-3"
       elevation="10"
     >
       <div class="header justify-end">
@@ -11,9 +11,9 @@
         <Button flat class="close-btn text-h6 text-grey-lighten-1" :addMargin="false" @click="$emit('close-chat')" icon="mdi-close"/>
       </div>
       <div class="messages-container">
-        <div class="messages-content ">
+        <div class="messages-content">
 
-          <div class="welcome-message align-center message-wrapper justify-center">
+          <div class="welcome-message  message-wrapper ">
             
             <div v-if="chatHistory.length < 1" class="d-flex custom-font flex-column align-center">
                 <v-icon class="text-grey-lighten-1 text-h1">mdi-robot-outline</v-icon>
@@ -22,7 +22,7 @@
             </div>
           </div>
 
-          <div
+          <div 
             v-for="(message, index) in chatHistory"
             :key="index"
             class="message-wrapper"
@@ -114,10 +114,7 @@
   .close-btn{
     background-color: #171a21!important;
   }
-  .chat-section{
-    display: flex;
-    align-items: center;
-  }
+ 
   .send-btn{
     background: linear-gradient(to left ,#3268e6, #66c0f4 );
   }
@@ -135,14 +132,14 @@
     z-index: 20;
   }
   .chat-container {
-    height: 740px;
-    width: 500px;
+    height: 100vh;
+    width: 600px;
     max-width: 1000px;
     position: fixed;
     border: 2px solid #171a21;
     right: 0;
     top: 0;
-    z-index: 1000;
+    z-index: 2000;
     background-color: #171a21!important;
     display: flex;
     flex-direction: column;
@@ -172,6 +169,8 @@
     padding-bottom: 0;
     margin-bottom: 64px;
     position: relative;
+    display: flex;
+    /* align-items: center; */
     height: calc(100vh - 140px);
     border: 1px solid #171a21;
   }
@@ -193,6 +192,7 @@
   
   .welcome-message {
     opacity: 0.9;
+
   }
   
   .message {
@@ -258,28 +258,30 @@
   .justify-end {
     justify-content: flex-end;
   }
-  @media (max-width: 1200px) {
+  @media (max-width: 600px) {
     .chat-container {
-    height: 400px;
-    
-  }
-}
-  @media (max-width: 1400px) {
-    .chat-container {
-    height: 600px;
-    
-  }
-}
-@media (max-width: 600px) {
-    .chat-container {
-    height: 805px;
-    width: 400px;
-    max-width: 400px;
+    max-height: 100dvh;
+    height: 100dvh;
+    width: 100;
+    max-width: 100%;
     overflow-x: hidden;
     display: flex;
     justify-content: center;
 
   }
 }
+  @media (max-width: 1200px) {
+    .chat-container {
+    height: 100dvh;
+    
+  }
+}
+  /* @media (max-width: 1400px) {
+    .chat-container {
+    height: 100vh;
+    
+  }
+} */
+
 
   </style>

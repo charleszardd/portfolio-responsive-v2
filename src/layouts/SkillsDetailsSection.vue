@@ -1,9 +1,9 @@
 <template id="skillsSection">
-  <v-container class="h-screen  mt-5 mt-lg-10 px-5 px-lg-10" fluid>
+  <v-container class="h-screen px-5 px-lg-10" fluid>
     <v-row class="">
       <v-col data-aos="fade-up" data-aos-duration="3000" class="text-center" cols="12" lg="12">
         <h1
-          class="elevated-text mb-lg-5 mt-lg-3 mb-md-2 mb-10 hero-font text-h4 font-weight-bold text-md-h3 text-lg-h3"
+          class="elevated-text mb-lg-5 mt-lg-3 mb-md-2 mb-10 custom-font text-h4 font-weight-bold text-md-h3 text-lg-h3"
         >
           Skills & Tools
         </h1>
@@ -26,7 +26,7 @@
             >
               <v-icon
                 v-if="!icon.image"
-                :class="`text-h4 text-lg-h3 ${icon.color}`"
+                :class="`text-h5 text-md-h3 text-lg-h2 ${icon.color}`"
                 >{{ icon.name }} </v-icon
               >
               
@@ -77,6 +77,7 @@ const imageWidth = computed(() => (mdAndUp.value ? "26" : "34"));
 .h-screen{
   align-items: center;
   display: flex;
+  background: linear-gradient(to left ,#171a21, #1b2838 );
 }
 .bg-card{
   background-color: 		#2b2d31!important;
