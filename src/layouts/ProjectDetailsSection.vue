@@ -1,7 +1,7 @@
 <template id="projectsSection">
   <v-container class="h-screen px-5 px-lg-10" fluid>
-    <v-row class="px-5 px-lg-10 d-flex">
-      <v-col cols="12" class="pr-5 px-0">
+    <v-row class="px-3 px-lg-10 d-flex">
+      <v-col cols="12" class="pr-0 pr-lg-5 px-0">
         <h1 class="elevated-text mb-lg-5 mb-md-2 mb-10 custom-font text-center text-h4 font-weight-bold text-md-h3 text-lg-h3">
           Projects
         </h1>
