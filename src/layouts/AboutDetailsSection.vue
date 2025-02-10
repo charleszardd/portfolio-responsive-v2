@@ -99,6 +99,7 @@ onMounted(() => {
 @media (max-width: 700px) {
   .about-details {
     padding-left: 0px;
+   
   }
   .slogan-details{
     display: flex;
@@ -126,6 +127,7 @@ onMounted(() => {
 @media (max-width: 1000px) {
     .about-details{
         padding-left: 0px;
+        padding-right: 1.5rem;
     }
     .slogan-details{
     display: flex;
@@ -139,6 +141,7 @@ onMounted(() => {
 @media (max-width: 1200px) {
   .about-details {
     padding-left: 0px;
+    padding-right: 1.5rem;
   }
   .slogan-details{
     display: flex;
@@ -153,6 +156,7 @@ onMounted(() => {
 @media (max-width: 600px) {
   .about-details {
     padding-left: 0px;
+    padding-right: .5rem;
   }
   .slogan-details{
     display: flex;

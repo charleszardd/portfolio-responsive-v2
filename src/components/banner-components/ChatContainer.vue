@@ -22,7 +22,11 @@
                 <p class="px-5 mt-5 text-center text-grey-lighten-1">Kasenyashi is powered by the Gemini AI API. While it can provide insights about me, some details may be limited. Feel free to ask!</p>
             </div>
           </div>
-
+          <!-- <v-row class="d-flex flex-row justify-center px-10">
+          <v-col v-for="button in buttons" :key="button" class="selection text-center">
+            <Button v-model="btnText" @click="handleSendSelectedMessage" text="yawa"/>
+        </v-col>
+      </v-row> -->
           <div 
             v-for="(message, index) in chatHistory"
             :key="index"
@@ -109,6 +113,20 @@
       isLoading.value = false;
     }
   };
+
+  // const buttons = ([
+  //   { text: 'yawsdsadsada' }
+  // ]);
+
+  // const btnText = ref('yawa')
+
+  // const handleSendSelectedMessage = () => {
+  //   const message = btnText.value;
+  //   chatHistory.value.push({ role: "user", text: message });
+
+  //   sendMessage();
+  //   console.log('button is clicked')
+  // }
   </script>
   
   <style scoped>

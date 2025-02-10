@@ -12,7 +12,7 @@
           throughout my experience.
         </p>
 
-        <v-row class="mt-3 mb-2 mt-lg-5 d-flex flex-wrap">
+        <v-row class="mt-3 mb-2 mt-lg-5 d-flex flex-wrap pr-4">
           <v-col
             class="d-flex justify-center flex-column px-2"
             cols="2"

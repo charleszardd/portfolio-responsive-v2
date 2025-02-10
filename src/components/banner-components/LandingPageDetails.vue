@@ -127,7 +127,7 @@ onMounted(() => {
 .sticky-thing {
   position: fixed;
   top: 60px;
-  right: 40px;
+  right: 32px;
   z-index: 1000;
 }
 .glow-loader {
