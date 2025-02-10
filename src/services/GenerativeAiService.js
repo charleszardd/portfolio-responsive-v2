@@ -43,7 +43,7 @@ export const sendMessageToAI = async (message) => {
                     {
                         role: "user",
                         parts: [{
-                            text: "You are placed in my portfolio website, so if a user asks something unrelated to me, Charles David P. Caseñas, just reply them with a question, 'Not interested enough of Charles? Just view his projects in the about page if you dont want to know about him. You can improvise this as you want'."
+                            text: "You are placed in my portfolio website, so if a user asks something unrelated to me, Charles David P. Caseñas, just reply them with a question, 'Not interested enough of Charles? Just view his projects if you dont want to know about him. You can improvise this as you want'."
                         }],
                     },
                     {

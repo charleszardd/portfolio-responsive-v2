@@ -6,7 +6,8 @@
       class="chat-container  card-radius border-sm bg-grey-lighten-3"
       elevation="10"
     >
-      <div class="header justify-end">
+      <div class="header justify-space-between">
+        <span class="text-h6 d-flex text-grey-lighten-1"><v-icon class="mr-2">mdi-robot-outline</v-icon> Kasenyashi</span>
   
         <Button flat class="close-btn text-h6 text-grey-lighten-1" :addMargin="false" @click="$emit('close-chat')" icon="mdi-close"/>
       </div>
@@ -53,7 +54,7 @@
             v-model="userMessage"
             variant="outlined"
             hide-details
-            label="Type a message"
+            label="Ask anything about Charles..."
             density="comfortable"
             :disabled="isLoading"
             @keyup.enter="sendMessage"
