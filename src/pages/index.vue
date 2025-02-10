@@ -1,5 +1,5 @@
 <template>
-  <!-- <HeroBannerSection /> -->
+
    <LandingPageDetails id="homeSection" @scroll-to-section="onScrollToSection" @open-chat="openChat"/>
    <ChatContainer v-if="isChatOpen" @close-chat="isChatOpen = false"/>
   <AboutDetailsSection ref="aboutSection" id="aboutSection"/>
@@ -9,8 +9,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue';
-import HeroBannerSection from '@/layouts/HeroBannerSection.vue';
+import { ref } from 'vue';
 import AboutDetailsSection from '@/layouts/AboutDetailsSection.vue';
 import SkillsDetailsSection from '@/layouts/SkillsDetailsSection.vue';
 import ProjectDetailsSection from '@/layouts/ProjectDetailsSection.vue';

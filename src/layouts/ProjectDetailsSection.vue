@@ -309,4 +309,10 @@ const goToSlide = (index) => {
     min-height: 300px;
   }
 }
+@media (max-width: 600px) {
+  .h-screen{
+    overflow: auto;
+  }
+
+}
 </style>
