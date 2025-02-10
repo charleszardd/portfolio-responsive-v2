@@ -12,7 +12,7 @@
         <Loader />
       </v-col>
       <v-col v-else class="hero-container">
-        <div class="profile mb-10 d-flex justify-center align-center">
+        <div class="profile rounded-lg mb-10 d-flex justify-center align-center">
           <img class="profile-img" src="/charles.png" alt="" />
         </div>
         <div
