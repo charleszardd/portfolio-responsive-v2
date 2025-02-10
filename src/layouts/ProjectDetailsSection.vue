@@ -6,47 +6,81 @@
           Projects
         </h1>
 
-        <v-row class="align-center mt-5 mb-5 px-3">
+        <!-- Desktop/Tablet View -->
+        <v-row v-if="$vuetify.display.smAndUp" class="align-center mt-5 mb-5 px-3">
           <v-btn @click="prevSlide" class="blur-btn1 px-0" height="150" size="small">
             <v-icon class="btn-text text-h2">mdi-chevron-left</v-icon>
           </v-btn>
 
-          <v-col class="d-flex justify-center px-0">
-            <v-card elevation="10" height="400px" max-width="700" class="card-img w-50 w-lg-66 mx-auto">
-              <img height="400px" :src="projects[currentIndex].img" cover />
-            </v-card>
+          <v-col class="d-flex project-container px-0">
+            <div class="project-wrapper">
+              <v-card elevation="10" class="card-img">
+                <v-fade-transition mode="out-in">
+                  <img :key="currentIndex" :src="projects[currentIndex].img" cover />
+                </v-fade-transition>
+              </v-card>
 
-            <div class="w-50 custom-font bg-steam pa-2 px-4 d-flex flex-column">
-              <span class="text-h5 mt-2 font-weight-bold">{{ projects[currentIndex].title }}</span>
-              <p class="text-title text-grey-lighten-1 text-wrap mt-5">{{ projects[currentIndex].description }}</p>
+              <div class="details-card custom-font bg-steam pa-2 px-4 d-flex flex-column">
+                <span class="text-h5 mt-2 font-weight-bold">{{ projects[currentIndex].title }}</span>
+                <p class="text-title text-grey-lighten-1 text-wrap mt-5">
+                  {{ projects[currentIndex].description }}
+                </p>
 
-              <v-row>
-                <v-col cols="auto" v-for="(language, index) in projects[currentIndex].languages" :key="index">
-                  <v-chip elevation="10" class="text-h6">
-                    <v-icon :class="language.color" v-if="language.name.startsWith('mdi-')" left>{{ language.name }}</v-icon>
-                    <span v-else>{{ language.color }}</span>
-                  </v-chip>
-                </v-col>
-              </v-row>
+                <v-row>
+                  <v-col cols="auto" v-for="(language, index) in projects[currentIndex].languages" :key="index">
+                    <v-chip elevation="10" class="text-h6">
+                      <v-icon :class="language.color" v-if="language.name.startsWith('mdi-')" left>{{ language.name }}</v-icon>
+                      <span v-else>{{ language.color }}</span>
+                    </v-chip>
+                  </v-col>
+                </v-row>
 
-              <v-row class="py-0 px-0">
-                <v-col v-for="(link, index) in projects[currentIndex].links" :key="index" class="pb-0 site-section d-flex align-center justify-space-between cursor-pointer">
-                  <span @click="goToLink(link.websiteLink)" class="text-link text-subtitle-2">
-                    {{ link.text }}
-                    <v-icon class="ml-2">{{ link.icon }}</v-icon>
-                  </span>
-                  <v-icon @click="goToLink(link.repositoryLink)" class="text-h4">{{ link.github }}</v-icon>
-                </v-col>
-              </v-row>
+                <v-row class="px-4 py-5 site-links">
+                  <v-col v-for="(link, index) in projects[currentIndex].links" :key="index" class="pb-0 d-flex align-center justify-space-between ">
+                    <span @click="goToLink(link.websiteLink)" class="text-link cursor-pointer text-subtitle-2">
+                      {{ link.text }}
+                      <v-icon class="ml-2">{{ link.icon }}</v-icon>
+                    </span>
+                    <v-icon v-if="link.github" @click="goToLink(link.repositoryLink)" class="cursor-pointer text-h4">{{ link.github }}</v-icon>
+                  </v-col>
+                </v-row>
+              </div>
             </div>
           </v-col>
 
-          <v-btn @click="nextSlide" size="small" height="150" class="blur-btn2 px-0 ">
+          <v-btn @click="nextSlide" size="small" height="150" class="blur-btn2 px-0">
             <v-icon class="btn-text text-h2">mdi-chevron-right</v-icon>
           </v-btn>
         </v-row>
 
-        <v-row justify="center" class="mt-3">
+        <!-- Mobile View -->
+        <v-row v-else class="projects-mobile mt-10 mb-10">
+          <v-col v-for="(project, index) in projects" :key="index" cols="12" class="mb-5">
+            <v-card elevation="10" class="mobile-card ">
+              <img :src="project.img" cover class="mobile-img" />
+              
+              <div class="mobile-details bg-steam ">
+                <span class="text-h5 font-weight-bold">{{ project.title }}</span>
+                <p class="text-title text-grey-lighten-1 text-wrap mt-3">
+                  {{ project.description }}
+                </p>
+
+                <v-row class="mt-5">
+                  <v-col v-for="(link, index) in project.links" :key="index" class="d-flex align-center justify-space-between">
+                    <span @click="goToLink(link.websiteLink)" class="text-link text-subtitle-2">
+                      {{ link.text }}
+                      <v-icon class="ml-2">{{ link.icon }}</v-icon>
+                    </span>
+                    <v-icon v-if="link.github" @click="goToLink(link.repositoryLink)" class="text-h4">{{ link.github }}</v-icon>
+                  </v-col>
+                </v-row>
+              </div>
+            </v-card>
+          </v-col>
+        </v-row>
+
+        <!-- Pagination Dots (Desktop/Tablet only) -->
+        <v-row v-if="$vuetify.display.smAndUp" justify="center" class="mt-3">
           <v-icon class="mr-2" v-for="(project, index) in projects" :key="index" @click="goToSlide(index)" :class="{ 'active-dot': index === currentIndex }" icon>
             <v-icon size="" height="" :color="index === currentIndex ? 'grey-lighten-2' : 'grey-darken-2'">mdi-rectangle</v-icon>
           </v-icon>
@@ -88,7 +122,7 @@ const projects = ref([
     title: "Personalized Japanese Actress Chatbot AI",
     description:
       "A Gemini API-powered chatbot AI, personalized to provide accurate and engaging answers about Japanese actresses using curated data.",
-      languages: [
+    languages: [
       { name: "mdi-vuejs", color: "text-green-lighten-1" },
       { name: "mdi-vuetify", color: "text-blue-lighten-2" },
       { name: "mdi-language-javascript", color: "text-yellow" },
@@ -108,8 +142,8 @@ const projects = ref([
     img: "/quickbites_ss.webp",
     title: "QuickBites: Canteen Pre Order System",
     description:
-      "A canteen pre-order system with online and cash payment options, featuring an admin CMS for customer management, product CRUD operations, and order tracking. It includes two admin roles: Authority Admin (full access) and Viewer Admin (view-only).",
-      languages: [
+      "A canteen pick-up pre-order system with online/cash payments, an admin CMS, and dual admin roles: Authority (full control) and Viewer (view-only).",
+    languages: [
       { name: "mdi-language-php", color: "text-blue" },
       { name: "mdi-laravel", color: "text-red" },
       { name: "mdi-database", color: "text-orange-lighten-1" },
@@ -117,12 +151,12 @@ const projects = ref([
       { name: "mdi-vuetify", color: "text-blue-lighten-2" },
       { name: "mdi-language-javascript", color: "text-yellow" },
     ],
-    links: [  {
-
+    links: [
+      {
         github: "mdi-github",
         repositoryLink: "https://github.com/charleszardd/quickbites",
-
-      },],
+      },
+    ],
   },
 ]);
 
@@ -135,7 +169,8 @@ const nextSlide = () => {
 };
 
 const prevSlide = () => {
-  currentIndex.value = (currentIndex.value - 1 + projects.value.length) % projects.value.length;
+  currentIndex.value =
+    (currentIndex.value - 1 + projects.value.length) % projects.value.length;
 };
 
 const goToSlide = (index) => {
@@ -144,97 +179,127 @@ const goToSlide = (index) => {
 </script>
 
 <style scoped>
-.h-screen{
+.h-screen {
   display: flex;
   align-items: center;
-   background: linear-gradient(to left ,#171a21, #1b2838 );
+  background: linear-gradient(to left, #171a21, #1b2838);
+  height: 100dvh;
+  max-height: 100%;
 }
-.bg-steam {
-  background-color: #1b2838;
-  position: relative;
-  
+
+.project-container {
+  justify-content: center;
+  max-width: 1400px;
+  margin: 0 auto;
 }
-.elevated-text {
-  color: white; 
-  font-size: 2rem;
-  font-weight: bold;
-  text-shadow: 
-    0px 2px 4px rgba(0, 0, 0, 1), 
-    0px 4px 8px rgba(0, 0, 0, 1);  
+
+.project-wrapper {
+  display: flex;
+  width: 100%;
+  gap: 0;
+  max-width: 1400px;
 }
+
 .card-img {
+  width: 50%;
+  height: 400px;
   background: rgba(0, 0, 0, 0.4) !important;
   border-radius: 0;
   position: relative;
   overflow: hidden;
 }
 
-.card-img::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
+.card-img img {
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.1);
-  z-index: 1;
+  object-fit: cover;
 }
 
-.site-section{
+.details-card {
+  width: 50%;
+  height: 400px;
+  position: relative;
+}
+
+.site-links{
   position: absolute;
   bottom: 0;
-  left: 0;
   right: 0;
-  margin-bottom: 10px;
+  left: 0;
 }
+
+/* Mobile Styles */
+.projects-mobile {
+  height: 100dvh;
+  max-height: 100%;
+
+}
+
+.mobile-card {
+  width: 100%;
+  background: transparent !important;
+}
+
+.mobile-img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16/10;
+  object-fit: cover;
+}
+
+.mobile-details {
+  width: 100%;
+  padding: 1rem !important;
+  height: auto;
+}
+
+/* Keep your existing styles but remove/modify: */
+.bg-steam {
+  background-color: #1b2838;
+}
+
+.elevated-text {
+  color: white;
+  font-size: 2rem;
+  font-weight: bold;
+  text-shadow: 0px 2px 4px rgba(0, 0, 0, 1), 0px 4px 8px rgba(0, 0, 0, 1);
+}
+
 .text-link:hover {
   text-decoration: underline;
   transition: all 0.7s ease-in-out;
 }
-.blur-btn1{
-  border-radius:  20px 0 0 20px ;
-  background: linear-gradient(to left ,#1b2838, #171a21 );
-}
-.blur-btn2{
-  border-radius:  0 20px 20px 0 ;
+
+.blur-btn1 {
+  border-radius: 20px 0 0 20px;
   background: linear-gradient(to left, #1b2838, #171a21);
 }
 
-@media (max-width: 600px) {
-  .blur-btn1, .blur-btn2 {
-  
-    height: 100px !important;
-  }
-  .btn-text {
-    font-size: 2rem!important;
-  }
-  .card-img{
-    position: relative;
-  }
-  .bg-steam{
-    position: absolute;
-  }
-  
+.blur-btn2 {
+  border-radius: 0 20px 20px 0;
+  background: linear-gradient(to left, #1b2838, #171a21);
 }
 
-
-@media (max-width: 1150px) {
-     img{
-      height: auto!important;
-      display: flex;
-      justify-content: center;
-      width: 100%;
-      aspect-ratio: 16/9;
-      background-size: cover;
-    }
-    .card-img{
-      width: 100%!important;
-      height: auto!important;
-    }
-    .bg-steam{
-      display: none !important;;
-    }
-
+/* Remove old media queries and replace with: */
+@media (min-width: 1400px) {
+  .project-wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
 }
 
+@media (max-width: 959px) {
+  .card-img, .details-card {
+    width: 100%;
+  }
+  
+  .project-wrapper {
+    flex-direction: column;
+  }
+  
+  .details-card {
+    height: auto;
+    min-height: 300px;
+  }
+}
 </style>
