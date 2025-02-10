@@ -63,7 +63,7 @@ const currentIndex = ref(0);
 
 const projects = ref([
   {
-    img: "/quiz studio_ss.png",
+    img: "/quiz.webp",
     title: "Quiz Studio CMS",
     description:
       "A Quizizz-like backend management system for admins to manage quizzes, track scores, and oversee user activity. Designed to integrate with a frontend for user participation.",
@@ -84,7 +84,7 @@ const projects = ref([
     ],
   },
   {
-    img: "/ai-chatbot ss.png",
+    img: "/ai-chatbot.webp",
     title: "Personalized Japanese Actress Chatbot AI",
     description:
       "A Gemini API-powered chatbot AI, personalized to provide accurate and engaging answers about Japanese actresses using curated data.",
@@ -105,7 +105,7 @@ const projects = ref([
     ],
   },
   {
-    img: "/quickbites_ss.png",
+    img: "/quickbites_ss.webp",
     title: "QuickBites: Canteen Pre Order System",
     description:
       "A canteen pre-order system with online and cash payment options, featuring an admin CMS for customer management, product CRUD operations, and order tracking. It includes two admin roles: Authority Admin (full access) and Viewer Admin (view-only).",

@@ -13,7 +13,7 @@
       </v-col>
       <v-col v-else class="hero-container">
         <div class="profile rounded-lg mb-10 d-flex justify-center align-center">
-          <img class="profile-img" src="/charles.png" alt="" />
+          <img class="profile-img" src="/charles.webp" alt="" />
         </div>
         <div
           class="profile-details d-flex justify-center text-center flex-column"

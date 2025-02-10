@@ -96,6 +96,7 @@ const toggleMenu = () => {
 const onScrollToSection = (id) => {
   const section = document.getElementById(id);
   if (section) {
+    menuOpen.value = false;
     section.scrollIntoView({ behavior: "smooth" });
   }
 };
