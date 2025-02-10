@@ -1,7 +1,7 @@
 <template id="homeSection">
   <v-container class="main-container custom-font px-10 px-lg-10" fluid>
     <div class="mt-8 d-flex justify-end sticky-thing" elevation="10">
-      <v-btn @click="$emit('open-chat')" icon color="#171a21" flat
+      <v-btn class="btn-icon" @click="$emit('open-chat')" icon color="#171a21" flat
         ><v-icon class="icon-color cursor-pointer"
           >mdi-robot-outline</v-icon
         ></v-btn
@@ -108,6 +108,7 @@ onMounted(() => {
 .items {
   height: 100vh;
 }
+
 .icon-color {
   color: #66c0f4;
 }

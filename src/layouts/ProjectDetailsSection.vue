@@ -1,13 +1,13 @@
 <template id="projectsSection">
   <v-container class="h-screen px-5 px-lg-10" fluid>
-    <v-row>
-      <v-col cols="12">
+    <v-row class="px-5 px-lg-10 d-flex">
+      <v-col cols="12" class="pr-5 px-0">
         <h1 class="elevated-text mb-lg-5 mb-md-2 mb-10 custom-font text-center text-h4 font-weight-bold text-md-h3 text-lg-h3">
           Projects
         </h1>
 
         <!-- Desktop/Tablet View -->
-        <v-row v-if="$vuetify.display.smAndUp" class="align-center mt-5 mb-5 px-3">
+        <v-row v-if="$vuetify.display.smAndUp" class="align-center mt-5 mb-5 ">
           <v-btn @click="prevSlide" class="blur-btn1 px-0" height="150" size="small">
             <v-icon class="btn-text text-h2">mdi-chevron-left</v-icon>
           </v-btn>
@@ -16,7 +16,7 @@
             <div class="project-wrapper">
               <v-card elevation="10" class="card-img">
                 <v-fade-transition mode="out-in">
-                  <img :key="currentIndex" :src="projects[currentIndex].img" cover />
+                  <img class="project-img" :key="currentIndex" :src="projects[currentIndex].img" cover />
                 </v-fade-transition>
               </v-card>
 
@@ -54,8 +54,8 @@
         </v-row>
 
         <!-- Mobile View -->
-        <v-row v-else class="projects-mobile mt-10 mb-10">
-          <v-col v-for="(project, index) in projects" :key="index" cols="12" class="mb-5">
+        <v-row v-else class="projects-mobile mt-10 mb-10 pb-10">
+          <v-col v-for="(project, index) in projects.slice(0, 3)" :key="index" cols="12" class="mb-10">
             <v-card elevation="10" class="mobile-card ">
               <img :src="project.img" cover class="mobile-img" />
               
@@ -76,7 +76,12 @@
                 </v-row>
               </div>
             </v-card>
+
           </v-col>
+          <v-col v-if="projects.length > 3" cols="12" class="d-flex justify-center mb-5 pt-0">
+    <Button height="45" class="show-more-btn" text="Show more"  />
+  </v-col>
+      
         </v-row>
 
         <!-- Pagination Dots (Desktop/Tablet only) -->
@@ -201,10 +206,10 @@ const goToSlide = (index) => {
 }
 
 .card-img {
-  width: 50%;
+  width: 65%;
   height: 400px;
   background: rgba(0, 0, 0, 0.4) !important;
-  border-radius: 0;
+  border-radius: 15px 0 0 15px;
   position: relative;
   overflow: hidden;
 }
@@ -219,6 +224,7 @@ const goToSlide = (index) => {
   width: 50%;
   height: 400px;
   position: relative;
+  border-radius: 0 15px 15px 0;
 }
 
 .site-links{
@@ -228,13 +234,16 @@ const goToSlide = (index) => {
   left: 0;
 }
 
-/* Mobile Styles */
 .projects-mobile {
   height: 100dvh;
   max-height: 100%;
 
 }
-
+.show-more-btn{
+  border: 2px solid #66c0f4!important;
+  background: transparent!important;
+  color: #66c0f4;
+}
 .mobile-card {
   width: 100%;
   background: transparent !important;
@@ -253,7 +262,6 @@ const goToSlide = (index) => {
   height: auto;
 }
 
-/* Keep your existing styles but remove/modify: */
 .bg-steam {
   background-color: #1b2838;
 }
@@ -280,7 +288,6 @@ const goToSlide = (index) => {
   background: linear-gradient(to left, #1b2838, #171a21);
 }
 
-/* Remove old media queries and replace with: */
 @media (min-width: 1400px) {
   .project-wrapper {
     max-width: 1200px;

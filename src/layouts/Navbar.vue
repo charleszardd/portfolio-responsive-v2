@@ -58,23 +58,23 @@
     <!-- Sidebar (Drawer) -->
     <v-navigation-drawer class="sidebar" v-model="menuOpen" temporary left>
       <v-list>
-        <v-list-item @click="onScrollToSection('homeSection'), (menu = false)">
+        <v-list-item class="text-h6" @click="onScrollToSection('homeSection'), (menu = false)">
           <v-icon class="mr-5">mdi-home</v-icon> Home
         </v-list-item>
         <v-list-item
-          class="mt-2"
+          class="mt-2 text-h6"
           @click="onScrollToSection('aboutSection'), (menu = false)"
         >
           <v-icon class="mr-5">mdi-account-cowboy-hat</v-icon> About
         </v-list-item>
         <v-list-item
-          class="mt-2"
+          class="mt-2 text-h6"
           @click="onScrollToSection('skillsSection'), (menu = false)"
         >
           <v-icon class="mr-5">mdi-tools</v-icon> Skills
         </v-list-item>
         <v-list-item
-          class="mt-2"
+          class="mt-2 text-h6"
           @click="onScrollToSection('projectsSection'), (menu = false)"
         >
           <v-icon class="mr-5">mdi-folder</v-icon> Projects
