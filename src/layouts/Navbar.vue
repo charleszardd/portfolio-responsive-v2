@@ -37,11 +37,19 @@
         Skills
       </v-btn>
       <v-btn
+        class="mr-5"
         v-if="$vuetify.display.mdAndUp"
         @click="onScrollToSection('projectsSection')"
         text
       >
         Projects
+      </v-btn>
+      <v-btn
+        v-if="$vuetify.display.mdAndUp"
+        @click="onScrollToSection('contactSection')"
+        text
+      >
+        Contact
       </v-btn>
 
       <v-spacer></v-spacer>
@@ -62,22 +70,28 @@
           <v-icon class="mr-5">mdi-home</v-icon> Home
         </v-list-item>
         <v-list-item
-          class="mt-2 text-h6"
+          class="mt-5 text-h6"
           @click="onScrollToSection('aboutSection'), (menu = false)"
         >
           <v-icon class="mr-5">mdi-account-cowboy-hat</v-icon> About
         </v-list-item>
         <v-list-item
-          class="mt-2 text-h6"
+          class="mt-5 text-h6"
           @click="onScrollToSection('skillsSection'), (menu = false)"
         >
           <v-icon class="mr-5">mdi-tools</v-icon> Skills
         </v-list-item>
         <v-list-item
-          class="mt-2 text-h6"
+          class="mt-5 text-h6"
           @click="onScrollToSection('projectsSection'), (menu = false)"
         >
           <v-icon class="mr-5">mdi-folder</v-icon> Projects
+        </v-list-item>
+        <v-list-item
+          class="mt-5 text-h6"
+          @click="onScrollToSection('contactSection'), (menu = false)"
+        >
+          <v-icon class="mr-5">mdi-phone</v-icon> Contact
         </v-list-item>
       </v-list>
     </v-navigation-drawer>

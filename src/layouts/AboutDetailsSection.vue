@@ -8,7 +8,7 @@
                         <LottieAnimationFiles class="animation-data" :animationData="animationData" width="450px" height="500px"/>
                     </div>
 
-                    <div class="about-details" data-aos="fade-left" data-aos-duration="3000">
+                    <div class="about-details pr-0 pr-lg-5" data-aos="fade-left" data-aos-duration="3000">
                         <span  class="custom-font mb-lg-5 mb-5 text-h6 d-block text-md-h5 text-lg-h4">Who am I? </span>
                         <h3 class="custom-font elevated-text font-color text-h4 text-md-h3 mb-4 text-lg-h2 font-weight-bold">
                             I'm Charles Caseñas
@@ -44,13 +44,14 @@ onMounted(() => {
 <style scoped>
 .about-details{
     padding-left: 5rem;
+
 }
 .quote-font, .slogan-font{
     color:#66c0f4;
 }
 .grid-container {
     position: relative;
-      background: linear-gradient(to left ,#171a21, #1b2838 );
+    background: linear-gradient(to left ,#171a21, #1b2838 );
     overflow: hidden;
 }
 
@@ -166,10 +167,15 @@ onMounted(() => {
     height: 150px!important;
     width: 150px!important;
   }
+  .bg-steam{
+    height: auto;
+    min-height: auto;
+    padding-top: 2em;
+  }
 }
 .bg-steam{
     background-color: 	#1b2838;
-    height: 100dvh;
-    max-height: 100%;
+    height: auto;
+    min-height: 100vh;
 }
 </style>

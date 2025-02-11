@@ -188,8 +188,9 @@ const goToSlide = (index) => {
   display: flex;
   align-items: center;
   background: linear-gradient(to left, #171a21, #1b2838);
-  height: 100dvh;
-  max-height: 100%;
+  height: auto;
+  min-height: 100vh;
+  padding: 20px;
 }
 
 .project-container {
@@ -235,8 +236,8 @@ const goToSlide = (index) => {
 }
 
 .projects-mobile {
-  height: 100dvh;
-  max-height: 100%;
+  height: auto;
+  min-height: auto;
 
 }
 .show-more-btn{
@@ -311,7 +312,9 @@ const goToSlide = (index) => {
 }
 @media (max-width: 600px) {
   .h-screen{
-    overflow: auto;
+    min-height: auto;
+    height: auto;
+    padding-top:60em;
   }
 
 }

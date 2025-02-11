@@ -36,6 +36,11 @@
                   provide insights about me, some details may be limited. Feel
                   free to ask!
                 </p>
+                <v-row class="mt-10 px-5">
+                <v-col class="" v-for="chat in chats" :key="chat">
+                  <Button class="bg-transparent text-blue-lighten-1 btn-message" elevation="10" @click="handleSendSelectedMessage(chat.text)" :text="chat.text"/>
+                </v-col>
+              </v-row>
               </div>
             </div>
 
@@ -89,7 +94,7 @@
             <v-btn
               elevation="10"
               @click="sendMessage"
-              height="48"
+              height="47"
               width="30"
               class="send-btn ml-2"
             >
@@ -139,31 +144,31 @@ const sendMessage = async () => {
   }
 };
 
-//    const buttons = ([
-//     { text: 'Tell me about Charles' },
-//     { text: 'Tell me about his projects' },
-//     { text: 'Enumerate all his tech stacks' },
-//   ]);
+  const chats = ([
+    { text: 'Tell me something about Charles' },
+   { text: 'Tell me about his projects' },
+    { text: 'Why should we hire him?' },
+   ]);
 
-//   const handleSendSelectedMessage = async (message) => {
-//   if (!message || isLoading.value) return;
+   const handleSendSelectedMessage = async (message) => {
+  if (!message || isLoading.value) return;
 
-//   chatHistory.value.push({ role: "user", text: message });
+  chatHistory.value.push({ role: "user", text: message });
 
-//   try {
-//     isLoading.value = true;
-//     const response = await sendMessageToAI(message);
-//     chatHistory.value.push({ role: "model", text: response.text });
-//   } catch (error) {
-//     console.error("Error in chat:", error);
-//     chatHistory.value.push({
-//       role: "model",
-//       text: "Service is currently overloaded. Please try again later.",
-//     });
-//   } finally {
-//     isLoading.value = false;
-//   }
-// };
+  try {
+     isLoading.value = true;
+    const response = await sendMessageToAI(message);
+     chatHistory.value.push({ role: "model", text: response.text });
+   } catch (error) {
+     console.error("Error in chat:", error);
+     chatHistory.value.push({
+       role: "model",
+       text: "Service is currently overloaded. Please try again later.",
+    });
+   } finally {
+     isLoading.value = false;
+   }
+};
 </script>
   
   <style scoped>
@@ -172,6 +177,9 @@ const sendMessage = async () => {
 }
 .bg-btn {
   background: #3268e6;
+}
+.btn-message{
+  border: 2px solid #66c0f4;
 }
 .send-btn {
   background: linear-gradient(to left, #3268e6, #66c0f4);

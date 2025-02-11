@@ -5,7 +5,7 @@
   <AboutDetailsSection ref="aboutSection" id="aboutSection"/>
   <SkillsDetailsSection id="skillsSection"/>
   <ProjectDetailsSection id="projectsSection"/>
-
+  <ContactDetailsSection id="contactSection"/>
 </template>
 
 <script setup>
@@ -13,6 +13,7 @@ import { ref } from 'vue';
 import AboutDetailsSection from '@/layouts/AboutDetailsSection.vue';
 import SkillsDetailsSection from '@/layouts/SkillsDetailsSection.vue';
 import ProjectDetailsSection from '@/layouts/ProjectDetailsSection.vue';
+import ContactDetailsSection from '@/layouts/ContactDetailsSection.vue';
 
 const aboutSection = ref(null);
 const isChatOpen = ref(false)

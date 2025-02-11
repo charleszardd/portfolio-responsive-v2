@@ -72,7 +72,7 @@ const loading = ref(true);
 const profile = {
   name: "Charles David P. Caseñas",
   description:
-    "Full-stack developer passionate about Laravel, Vue.js, and crafting seamless web experiences with modern design.",
+    "🙶 Fuel your hunger for growth with the same passion you have for food. 🗿 🙷",
 };
 
 onMounted(() => {

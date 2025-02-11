@@ -78,6 +78,8 @@ const imageWidth = computed(() => (mdAndUp.value ? "26" : "34"));
   align-items: center;
   display: flex;
   background: linear-gradient(to left ,#171a21, #1b2838 );
+  height: auto;
+  min-height: 100vh;
 }
 .bg-card{
   background-color: 		#2b2d31!important;
@@ -106,6 +108,12 @@ const imageWidth = computed(() => (mdAndUp.value ? "26" : "34"));
   .image-width {
     width:  34px;
 
+  }
+}
+@media (max-width: 600px) {
+  .h-screen{
+    height: auto;
+    min-height: auto;
   }
 }
 
