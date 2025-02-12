@@ -31,6 +31,7 @@
                   "
                   class="text-field"
                   v-model="form.name"
+                  @keyup.enter="handleSendMessage"
                   label="Your name (e.g. Walter White)"
                   @input="handleInput('name')"
                 ></v-text-field>
@@ -48,6 +49,7 @@
                   "
                   class="text-field"
                   v-model="form.email"
+                  @keyup.enter="handleSendMessage"
                   label="Your email (e.g. example@gmail.com)"
                   @input="handleInput('email')"
                 ></v-text-field>
@@ -64,7 +66,7 @@
                   "
                   class="text-field"
                   v-model="form.message"
-                  @keyup.enter="sendMessageToMe"
+                  @keyup.enter="handleSendMessage"
                   label="Message me something..."
                   @input="handleInput('message')"
                 ></v-textarea>
