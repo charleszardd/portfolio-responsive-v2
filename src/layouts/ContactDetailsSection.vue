@@ -1,6 +1,6 @@
 <template id="contactSection">
   <v-container class="h-screen custom-font" fluid>
-    <v-row class="px-0 px-lg-10">
+    <v-row class="px-0 contact-container px-lg-10">
       <v-col
         v-for="contactDetails in contacts"
         :key="contactDetails"
@@ -21,11 +21,14 @@
             </v-card-title>
             <v-form ref="formRef">
               <v-col>
-
                 <v-text-field
                   variant="outlined"
-                  :error="(showHint || fieldTouched.name) && !form.name.trim()" 
-                  :error-messages="(showHint || fieldTouched.name) && !form.name.trim() ? 'Please fill out this field' : ''"
+                  :error="(showHint || fieldTouched.name) && !form.name.trim()"
+                  :error-messages="
+                    (showHint || fieldTouched.name) && !form.name.trim()
+                      ? 'Please fill out this field'
+                      : ''
+                  "
                   class="text-field"
                   v-model="form.name"
                   label="Your name (e.g. Walter White)"
@@ -34,8 +37,15 @@
 
                 <v-text-field
                   variant="outlined"
-                  :error="(showHint && !form.email.trim()) || (fieldTouched.email && form.email.trim() && emailError)" 
-                  :error-messages="(showHint || fieldTouched.email) && !form.email.trim() ? 'Please fill out this field': '' || getEmailErrorMessage "
+                  :error="
+                    (showHint && !form.email.trim()) ||
+                    (fieldTouched.email && form.email.trim() && emailError)
+                  "
+                  :error-messages="
+                    (showHint || fieldTouched.email) && !form.email.trim()
+                      ? 'Please fill out this field'
+                      : '' || getEmailErrorMessage
+                  "
                   class="text-field"
                   v-model="form.email"
                   label="Your email (e.g. example@gmail.com)"
@@ -44,8 +54,14 @@
 
                 <v-textarea
                   variant="outlined"
-                  :error="(showHint || fieldTouched.message) && !form.message.trim()" 
-                  :error-messages="(showHint || fieldTouched.message) && !form.message.trim() ? 'Please fill out this field' : ''"
+                  :error="
+                    (showHint || fieldTouched.message) && !form.message.trim()
+                  "
+                  :error-messages="
+                    (showHint || fieldTouched.message) && !form.message.trim()
+                      ? 'Please fill out this field'
+                      : ''
+                  "
                   class="text-field"
                   v-model="form.message"
                   @keyup.enter="sendMessageToMe"
@@ -63,13 +79,43 @@
               </v-col>
             </v-form>
           </v-card>
+
+          <!-- <Modal :modelValue="isModalOpen" @update:modelValue="isModalOpen = $event" title="Contact me" message="Call me at +639 638623607"/> -->
+
+          <v-card
+            elevation="10"
+            class="social-links-card ml-5 d-flex flex-column"
+          >
+            <v-col
+              class="d-flex flex-column flex-grow-1"
+              v-for="socialLinks in socials"
+              :key="socialLinks"
+            >
+              <v-card
+                :class="socialLinks.color"
+                elevation="10"
+                class="social-card d-flex align-center justify-center flex-grow-1"
+              >
+                <v-card-title
+                  class="cursor-pointer"
+                  @click="
+                    socialLinks.url
+                      ? goToSite(socialLinks.url)
+                      : handlePhoneClick()
+                  "
+                >
+                  <v-icon>{{ socialLinks.link }}</v-icon>
+                </v-card-title>
+              </v-card>
+            </v-col>
+          </v-card>
         </div>
       </v-col>
     </v-row>
   </v-container>
 </template>
   
-  <script setup>
+<script setup>
 import { computed, ref } from "vue";
 import { sendMessageToMe } from "@/services/EmailSenderService";
 
@@ -95,7 +141,7 @@ const form = ref({
 });
 
 const isValidEmail = (email) => {
-  return email.includes('@') && email.includes('.com');
+  return email.includes("@") && email.includes(".com");
 };
 
 const emailError = computed(() => {
@@ -104,10 +150,10 @@ const emailError = computed(() => {
 
 const getEmailErrorMessage = computed(() => {
   if ((showHint || fieldTouched.value.email) && emailError.value) {
-    return 'Please enter a valid email address';
+    return "Please enter a valid email address";
   }
- 
-  return '';
+
+  return "";
 });
 
 const handleInput = (field) => {
@@ -139,13 +185,45 @@ const handleSendMessage = async () => {
     fieldTouched.value = {
       name: false,
       email: false,
-      message: false
+      message: false,
     };
   } catch (error) {
     console.error("Yawa error!", error);
   } finally {
     loading.value = false;
   }
+};
+
+const socials = ref([
+  {
+    link: "mdi-facebook",
+    color: "bg-blue-darken-3",
+    url: "https://www.facebook.com/profile.php?id=100009432129470",
+  },
+  {
+    link: "mdi-instagram",
+    color: "bg-insta",
+    url: "https://www.instagram.com/kasenyassshi/",
+  },
+  {
+    link: "mdi-linkedin",
+    color: "bg-blue-darken-2",
+    url: "https://www.linkedin.com/in/charles-david-case%C3%B1as-776aa8293/",
+  },
+  {
+    link: "mdi-github",
+    color: "bg-github",
+    url: "https://github.com/charleszardd",
+  },
+  { link: "mdi-phone", color: "bg-green" },
+]);
+
+const goToSite = (url) => {
+  window.open(url, "_blank");
+};
+
+const handlePhoneClick = () => {
+  window.location.href = "sms: +639638623607";
 };
 </script>
   
@@ -164,6 +242,18 @@ const handleSendMessage = async () => {
   background-color: #171a21;
   border-radius: 15px;
 }
+.social-links-card {
+  background-color: #171a21;
+  border-radius: 15px;
+  width: 9%;
+}
+.social-card {
+  background-color: #171a21;
+  transition: transform 0.3s ease-in-out;
+}
+.social-card:hover {
+  transform: scale(1.5);
+}
 
 @media (max-width: 1400px) {
   .contact-card {
@@ -171,8 +261,16 @@ const handleSendMessage = async () => {
     max-width: 600px;
     height: auto;
   }
+  .social-links-card {
+  background-color: #171a21;
+  border-radius: 15px;
+  width: 9%;
+}
   .h-screen {
     padding-top: 10em;
+  }
+  .contact-container{
+    padding-bottom: 1em;
   }
 }
 @media (max-width: 600px) {
