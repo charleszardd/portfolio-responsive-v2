@@ -21,8 +21,8 @@
               </v-card-title>
               <v-form ref="formRef">
                 <v-col>
-                  <v-text-field variant="outlined" class="text-field" v-model="form.name" label="Name"></v-text-field>
-                  <v-text-field variant="outlined" class="text-field" v-model="form.email" label="Email"></v-text-field>
+                  <v-text-field variant="outlined" class="text-field" v-model="form.name" label="Your name (e.g. Walter White)"></v-text-field>
+                  <v-text-field variant="outlined" class="text-field" v-model="form.email" label="Your email (e.g. example@gmail.com)"></v-text-field>
                   <v-textarea variant="outlined" class="text-field" v-model="form.message" @keyup.enter="sendMessageToMe" label="Message me something..."></v-textarea>
   
                   <Button

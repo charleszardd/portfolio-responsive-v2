@@ -64,7 +64,7 @@
                     message.role === 'user' ? 'user-message' : 'bot-message'
                   "
                 >
-                  <p class="message-text">{{ message.text }}</p>
+                  <p class=" message-text" v-html="parseMarkdown(message.text)"></p>
                 </div>
               </div>
             </div>
@@ -112,6 +112,7 @@ import { sendMessageToAI } from "../../services/GenerativeAiService";
 import LottieAnimationFiles from "@/components/reusables/LottieAnimationFiles.vue";
 import LoadTyping from "@/lottie-animation/LoadTyping.json";
 import { ref } from "vue";
+import { marked } from 'marked';
 
 const animationData = ref(LoadTyping);
 const userMessage = ref("");
@@ -169,6 +170,13 @@ const sendMessage = async () => {
      isLoading.value = false;
    }
 };
+
+const parseMarkdown = (text) => {
+  return marked(text);
+};
+marked.setOptions({
+  gfm: false, // Disable GitHub-Flavored Markdown
+});
 </script>
   
   <style scoped>
@@ -276,10 +284,12 @@ const sendMessage = async () => {
 }
 .message {
   max-width: calc(70% - 48px);
-  padding: 0.75rem 1rem;
+  padding: 0.75rem;
   border-radius: 1rem;
   word-wrap: break-word;
   overflow-wrap: break-word;
+  margin-bottom: 0!important;
+  padding-bottom: 0!important;
 }
 
 .user-message {
@@ -351,10 +361,5 @@ const sendMessage = async () => {
     height: 100dvh;
   }
 }
-/* @media (max-width: 1400px) {
-    .chat-container {
-    height: 100vh;
-    
-  }
-} */
+
 </style>
