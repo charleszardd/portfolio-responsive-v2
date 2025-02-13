@@ -7,13 +7,12 @@
         </v-icon>
       </v-app-bar-nav-icon>
 
-      <div class="d-flex pl-5">
+      <div v-if="$vuetify.display.mdAndUp" class="d-flex pl-5">
         <span
           v-for="tab in tabs"
           :key="tab.id"
           class="btn-link mr-10"
           :class="{ active: activeSection === tab.id }"
-          v-if="$vuetify.display.mdAndUp"
           @click="onScrollToSection(tab.id)"
         >
           {{ tab.label }}
