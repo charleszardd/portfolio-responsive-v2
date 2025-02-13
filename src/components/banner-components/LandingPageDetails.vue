@@ -1,9 +1,9 @@
 <template id="homeSection">
   <v-container class="main-container custom-font px-10 px-lg-10" fluid>
     <div class="mt-8 d-flex justify-end sticky-thing" elevation="10">
-      <v-btn class="btn-icon" @click="$emit('open-chat')" icon color="#171a21" flat
+      <v-btn class="btn-icon" @click="$emit('open-chat')" icon color="#171a21" elevation="5"
         ><v-icon class="icon-color cursor-pointer"
-          >mdi-robot-outline</v-icon
+          >mdi-robot</v-icon
         ></v-btn
       >
     </div>
@@ -102,6 +102,9 @@ onMounted(() => {
   background-color: transparent;
   color: #66c0f4;
 }
+.btn-icon{
+  background-color: #66c0f4!important;
+}
 .btn-2 {
   background: linear-gradient(to left, #3268e6, #66c0f4);
 }
@@ -110,7 +113,7 @@ onMounted(() => {
 }
 
 .icon-color {
-  color: #66c0f4;
+  color: #171a21;
 }
 .elevated-text {
   color: white;
