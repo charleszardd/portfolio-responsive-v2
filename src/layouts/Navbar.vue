@@ -1,60 +1,26 @@
 <template>
   <v-container class="custom-font" fluid>
     <v-app-bar class="container px-0 px-lg-5" app>
-
-      <v-app-bar-nav-icon  v-if="$vuetify.display.smAndDown" @click="toggleMenu">
-        <v-icon
-          class="transition-transform"
-          :class="{ 'rotate-180': menuOpen }"
-        >
+      <v-app-bar-nav-icon v-if="$vuetify.display.smAndDown" @click="toggleMenu">
+        <v-icon class="transition-transform" :class="{ 'rotate-180': menuOpen }">
           {{ menuOpen ? "mdi-close" : "mdi-menu" }}
         </v-icon>
       </v-app-bar-nav-icon>
 
-
-      <v-btn
-        class="mr-5"
-        v-if="$vuetify.display.mdAndUp"
-        @click="onScrollToSection('homeSection')"
-        text
-      >
-        Home
-      </v-btn>
-      <v-btn
-        class="mr-5"
-        v-if="$vuetify.display.mdAndUp"
-        @click="onScrollToSection('aboutSection')"
-        text
-      >
-        About
-      </v-btn>
-      <v-btn
-        class="mr-5"
-        v-if="$vuetify.display.mdAndUp"
-        @click="onScrollToSection('skillsSection')"
-        text
-      >
-        Skills
-      </v-btn>
-      <v-btn
-        class="mr-5"
-        v-if="$vuetify.display.mdAndUp"
-        @click="onScrollToSection('projectsSection')"
-        text
-      >
-        Projects
-      </v-btn>
-      <v-btn
-        v-if="$vuetify.display.mdAndUp"
-        @click="onScrollToSection('contactSection')"
-        text
-      >
-        Contact
-      </v-btn>
-
+      <div class="d-flex pl-5">
+        <span
+          v-for="tab in tabs"
+          :key="tab.id"
+          class="btn-link mr-10"
+          :class="{ active: activeSection === tab.id }"
+          v-if="$vuetify.display.mdAndUp"
+          @click="onScrollToSection(tab.id)"
+        >
+          {{ tab.label }}
+        </span>
+      </div>
       <v-spacer></v-spacer>
 
-      <!-- GitHub Button -->
       <Button
         icon="mdi-github"
         @click="goToSite('https://github.com/charleszardd')"
@@ -63,35 +29,15 @@
       />
     </v-app-bar>
 
-    <!-- Sidebar (Drawer) -->
     <v-navigation-drawer class="sidebar" v-model="menuOpen" temporary left>
       <v-list>
-        <v-list-item class="text-h6" @click="onScrollToSection('homeSection'), (menu = false)">
-          <v-icon class="mr-5">mdi-home</v-icon> Home
-        </v-list-item>
         <v-list-item
-          class="mt-5 text-h6"
-          @click="onScrollToSection('aboutSection'), (menu = false)"
+          v-for="tab in tabs"
+          :key="tab.id"
+          class="text-h6"
+          @click="onScrollToSection(tab.id), (menuOpen = false)"
         >
-          <v-icon class="mr-5">mdi-account-cowboy-hat</v-icon> About
-        </v-list-item>
-        <v-list-item
-          class="mt-5 text-h6"
-          @click="onScrollToSection('skillsSection'), (menu = false)"
-        >
-          <v-icon class="mr-5">mdi-tools</v-icon> Skills
-        </v-list-item>
-        <v-list-item
-          class="mt-5 text-h6"
-          @click="onScrollToSection('projectsSection'), (menu = false)"
-        >
-          <v-icon class="mr-5">mdi-folder</v-icon> Projects
-        </v-list-item>
-        <v-list-item
-          class="mt-5 text-h6"
-          @click="onScrollToSection('contactSection'), (menu = false)"
-        >
-          <v-icon class="mr-5">mdi-phone</v-icon> Contact
+          <v-icon class="mr-5">{{ tab.icon }}</v-icon> {{ tab.label }}
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
@@ -99,9 +45,18 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { ref, onMounted, onUnmounted } from "vue";
 
 const menuOpen = ref(false);
+const activeSection = ref("homeSection");
+
+const tabs = [
+  { id: "homeSection", label: "Home", icon: "mdi-home" },
+  { id: "aboutSection", label: "About", icon: "mdi-account-cowboy-hat" },
+  { id: "skillsSection", label: "Skills", icon: "mdi-tools" },
+  { id: "projectsSection", label: "Projects", icon: "mdi-folder" },
+  { id: "contactSection", label: "Contact", icon: "mdi-phone" },
+];
 
 const toggleMenu = () => {
   menuOpen.value = !menuOpen.value;
@@ -112,8 +67,33 @@ const onScrollToSection = (id) => {
   if (section) {
     menuOpen.value = false;
     section.scrollIntoView({ behavior: "smooth" });
+    activeSection.value = id;
   }
 };
+
+const updateActiveSection = () => {
+  const sections = tabs.map((tab) => ({
+    id: tab.id,
+    offset: document.getElementById(tab.id)?.offsetTop ?? 0,
+  }));
+
+  const scrollPosition = window.scrollY + 200;
+
+  for (let i = sections.length - 1; i >= 0; i--) {
+    if (scrollPosition >= sections[i].offset) {
+      activeSection.value = sections[i].id;
+      break;
+    }
+  }
+};
+
+onMounted(() => {
+  window.addEventListener("scroll", updateActiveSection);
+});
+
+onUnmounted(() => {
+  window.removeEventListener("scroll", updateActiveSection);
+});
 
 const goToSite = (url) => {
   window.open(url, "_blank");
@@ -127,10 +107,36 @@ const goToSite = (url) => {
 .sidebar {
   background-color: #171a21;
 }
-.transition-transform{
+.transition-transform {
   transition: transform 0.4s ease-in-out;
 }
 .rotate-180 {
   transform: rotate(180deg);
+}
+.btn-link {
+  position: relative;
+  display: block;
+  text-transform: uppercase;
+  cursor: pointer;
+  font-weight: 500;
+}
+.btn-link::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -15%;
+  background-color: #66c0f4;
+  width: 100%;
+  height: 4px;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+.btn-link.active::before {
+  opacity: 1;
+}
+.btn-link.active{
+  color:#66c0f4;
+  transition: opacity 0.3s ease-in-out;
 }
 </style>
