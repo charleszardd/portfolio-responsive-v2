@@ -115,12 +115,6 @@ onMounted(() => {
 .icon-color {
   color: #171a21;
 }
-.elevated-text {
-  color: white;
-  font-size: 2rem;
-  font-weight: bold;
-  text-shadow: 0px 2px 4px rgba(0, 0, 0, 1), 0px 4px 8px rgba(0, 0, 0, 1);
-}
 .hero-container {
   position: relative;
   display: flex;

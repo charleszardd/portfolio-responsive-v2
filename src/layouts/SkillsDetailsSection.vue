@@ -84,15 +84,8 @@ const imageWidth = computed(() => (mdAndUp.value ? "26" : "34"));
 .bg-card{
   background-color: 		#2b2d31!important;
 }
-.elevated-text {
-  color: white; 
-  font-size: 2rem;
-  font-weight: bold;
-  text-shadow: 
-    0px 2px 4px rgba(0, 0, 0, 1), 
-    0px 4px 8px rgba(0, 0, 0, 1);  
-}
- @media (max-width: 700px) {
+
+@media (max-width: 700px) {
   .image-width {
     width:  34px;
 

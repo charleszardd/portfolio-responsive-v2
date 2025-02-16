@@ -55,14 +55,6 @@ onMounted(() => {
     overflow: hidden;
 }
 
-.elevated-text {
-  font-size: 2rem;
-  font-weight: bold;
-  text-shadow: 
-    0px 2px 4px rgba(0, 0, 0, 1), 
-    0px 4px 8px rgba(0, 0, 0, 1);  
-}
-
 .about-container {
     position: relative;
     display: flex;
@@ -71,7 +63,6 @@ onMounted(() => {
     align-items: center; 
     min-height: 100vh; 
 }
-
 
 @media (max-width: 1400px) {
   .about-details {

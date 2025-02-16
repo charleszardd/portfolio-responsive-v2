@@ -28,10 +28,10 @@
 
                 <v-row>
                   <v-col cols="auto" v-for="(language, index) in projects[currentIndex].languages" :key="index">
-                    <v-chip elevation="10" class="text-h6">
+                    <v-card elevation="10" class="text-h6 py-2 bg-card px-3 rounded-lg">
                       <v-icon :class="language.color" v-if="language.name.startsWith('mdi-')" left>{{ language.name }}</v-icon>
                       <span v-else>{{ language.color }}</span>
-                    </v-chip>
+                    </v-card>
                   </v-col>
                 </v-row>
 
@@ -192,7 +192,9 @@ const goToSlide = (index) => {
   min-height: 100vh;
   padding: 20px;
 }
-
+.bg-card{
+  background: linear-gradient(to left, #171a21, #1b2838);
+}
 .project-container {
   justify-content: center;
   max-width: 1400px;
@@ -267,12 +269,7 @@ const goToSlide = (index) => {
   background-color: #1b2838;
 }
 
-.elevated-text {
-  color: white;
-  font-size: 2rem;
-  font-weight: bold;
-  text-shadow: 0px 2px 4px rgba(0, 0, 0, 1), 0px 4px 8px rgba(0, 0, 0, 1);
-}
+
 
 .text-link:hover {
   text-decoration: underline;

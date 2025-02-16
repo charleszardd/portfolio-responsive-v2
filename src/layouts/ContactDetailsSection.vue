@@ -8,7 +8,7 @@
         class="text-center d-flex flex-column justify-center pr-0 pr-lg-5 px-0"
       >
         <div class="px-lg-5 px-2">
-          <h1 class="text-h4 font-weight-bold text-md-h3 text-lg-h3">
+          <h1 class="text-h4 elevated-text font-weight-bold text-md-h3 text-lg-h3">
             {{ contactDetails.title }}
           </h1>
           <p class="mt-2 text-grey-lighten-2">{{ contactDetails.subtitle }}</p>
