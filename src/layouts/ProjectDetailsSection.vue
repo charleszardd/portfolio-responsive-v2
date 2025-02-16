@@ -29,10 +29,9 @@
 
                 <v-row>
                   <v-col cols="auto" v-for="(language, index) in projects[currentIndex].languages" :key="index">
-                    <v-card elevation="10" class="text-h6 py-2 bg-card px-3 rounded-lg">
-                      <v-icon :class="language.color" v-if="language.name.startsWith('mdi-')" left>{{ language.name }}</v-icon>
-                      <span v-else>{{ language.color }}</span>
-                    </v-card>
+   
+                      <component elevation="10" :is="language.component" class="icon-size my-5" />
+                   
                   </v-col>
                 </v-row>
 
@@ -98,6 +97,13 @@
 
 <script setup>
 import { ref } from "vue";
+import PHPicon from "@/components/reusables/icons/PHPicon.vue";
+import MySQLicon from "@/components/reusables/icons/MySQLicon.vue";
+import LaravelIcon from "@/components/reusables/icons/LaravelIcon.vue";
+import VueJSIcon from "@/components/reusables/icons/VueJSIcon.vue";
+import VuetifyIcon from "@/components/reusables/icons/VuetifyIcon.vue";
+import JavascriptIcon from "@/components/reusables/icons/JavascriptIcon.vue";
+import CSSIcon from "@/components/reusables/icons/CSSIcon.vue";
 
 const currentIndex = ref(0);
 
@@ -108,12 +114,12 @@ const projects = ref([
     description:
       "A Quizizz-like backend management system for admins to manage quizzes, track scores, and oversee user activity. Designed to integrate with a frontend for user participation.",
     languages: [
-      { name: "mdi-language-php", color: "text-blue" },
-      { name: "mdi-laravel", color: "text-red" },
-      { name: "mdi-database", color: "text-orange-lighten-1" },
-      { name: "mdi-vuejs", color: "text-green-lighten-1" },
-      { name: "mdi-vuetify", color: "text-blue-lighten-2" },
-      { name: "mdi-language-javascript", color: "text-yellow" },
+      { component: PHPicon },
+      { component: LaravelIcon },
+      { component: MySQLicon },
+      { component: VueJSIcon },
+      { component: VuetifyIcon },
+      { component: JavascriptIcon },
     ],
     links: [
       {
@@ -129,10 +135,10 @@ const projects = ref([
     description:
       "A Gemini API-powered chatbot AI, personalized to provide accurate and engaging answers about Japanese actresses using curated data.",
     languages: [
-      { name: "mdi-vuejs", color: "text-green-lighten-1" },
-      { name: "mdi-vuetify", color: "text-blue-lighten-2" },
-      { name: "mdi-language-javascript", color: "text-yellow" },
-      { name: "mdi-language-css3", color: "text-blue" },
+      { component: VueJSIcon },
+      { component: VuetifyIcon },
+      { component: JavascriptIcon },
+      { component: CSSIcon },
     ],
     links: [
       {
@@ -150,12 +156,12 @@ const projects = ref([
     description:
       "A canteen pick-up pre-order system with online/cash payments, an admin CMS, and dual admin roles: Authority (full control) and Viewer (view-only).",
     languages: [
-      { name: "mdi-language-php", color: "text-blue" },
-      { name: "mdi-laravel", color: "text-red" },
-      { name: "mdi-database", color: "text-orange-lighten-1" },
-      { name: "mdi-vuejs", color: "text-green-lighten-1" },
-      { name: "mdi-vuetify", color: "text-blue-lighten-2" },
-      { name: "mdi-language-javascript", color: "text-yellow" },
+      { component: PHPicon },
+      { component: LaravelIcon },
+      { component: MySQLicon },
+      { component: VueJSIcon },
+      { component: VuetifyIcon },
+      { component: JavascriptIcon },
     ],
     links: [
       {
@@ -201,7 +207,10 @@ const goToSlide = (index) => {
   max-width: 1400px;
   margin: 0 auto;
 }
-
+.icon-size{
+  width: 40px;
+  height: 40px;
+}
 .project-wrapper {
   display: flex;
   width: 100%;
@@ -267,7 +276,7 @@ const goToSlide = (index) => {
 }
 
 .bg-steam {
-  background-color: #1b2838;
+  background-color: #171a21;
 }
 .text-link:hover {
   text-decoration: underline;

@@ -1,49 +1,32 @@
 <template id="skillsSection">
   <v-container class="h-screen px-5 px-lg-10" fluid>
-    <v-row class="">
+    <v-row class="px-10 pl-4">
       <v-col data-aos="fade-up" data-aos-duration="3000" class="text-center" cols="12" lg="12">
         <h1
           class="elevated-text mb-lg-5 mt-lg-3 mb-md-2 mb-10 custom-font text-h4 font-weight-bold text-md-h3 text-lg-h3"
         >
           Skills & Tools
         </h1>
-        <p class="text-subtitle-2 mb-5 mb-lg-0 custom-font text-lg-subtitle-1 text-grey-lighten-2">
+        <p class="text-subtitle-2 mb-5 mb-lg-10 custom-font text-lg-subtitle-1 text-grey-lighten-2">
           Here are the technical skills I've honed and the tools I've used
           throughout my experience.
         </p>
 
-        <v-row class="mt-3 mb-2 mt-lg-5 d-flex flex-wrap pr-4">
-          <v-col
-            class="d-flex justify-center flex-column px-2"
-            cols="2"
-            lg="2"
-            v-for="icon in icons"
-            :key="icon"
-          >
-            <v-card
-              class="bg-card pa-1 pa-lg-2 mr-1 mr-lg-1 mb-1 mb-lg-2 rounded-lg"
-              elevation="10"
-            >
-              <v-icon
-                v-if="!icon.image"
-                :class="`text-h5 text-md-h3 text-lg-h2 ${icon.color}`"
-                >{{ icon.name }} </v-icon
-              >
-              
-              <img
-                class="image-width py-0 py-lg-1 py-md-1"
-                :width="imageWidth ? '40': '50'"
-                align="center"
-                v-else
-                :src="icon.image"
-              />
-            </v-card>
-            <span
-              class="text-subtitle-2 custom-font text-lg-subtitle-1 d-none d-md-block d-lg-block"
-              >{{ icon.label }}</span
-            >
-          </v-col>
-        </v-row>
+        <v-row class="mt-3 py-5 px-4 mb-2 skills-card-bg rounded-lg mt-lg-10 d-flex pr-1 pr-lg-4">
+  <v-col
+    class="d-flex justify-center flex-column px-0 px-lg-10"
+    cols="2"
+    lg="2"
+    v-for="icon in icons"
+    :key="icon.label"
+  >
+
+      <component elevation="10" :is="icon.component" class="icon-size my-5" />
+
+  
+  </v-col>
+</v-row>
+
       </v-col>
     </v-row>
   </v-container>
@@ -51,24 +34,39 @@
 <script setup>
 import { computed } from "vue";
 import { useDisplay } from "vuetify";
+import JavascriptIcon from "@/components/reusables/icons/JavascriptIcon.vue";
+import PHPicon from "@/components/reusables/icons/PHPicon.vue";
+import LaravelIcon from "@/components/reusables/icons/LaravelIcon.vue";
+import MySQLicon from "@/components/reusables/icons/MySQLicon.vue";
+import PostmanIcon from "@/components/reusables/icons/PostmanIcon.vue";
+import VercelIcon from "@/components/reusables/icons/VercelIcon.vue";
+import HTMLIcon from "@/components/reusables/icons/HTMLIcon.vue";
+import CSSIcon from "@/components/reusables/icons/CSSIcon.vue";
+import TailwindIcon from "@/components/reusables/icons/TailwindIcon.vue";
+import VueJSIcon from "@/components/reusables/icons/VueJSIcon.vue";
+import VuetifyIcon from "@/components/reusables/icons/VuetifyIcon.vue";
+import VSCodeIcon from "@/components/reusables/icons/VSCodeIcon.vue";
+import GitIcon from "@/components/reusables/icons/GitIcon.vue";
+import GithubIcon from "@/components/reusables/icons/GithubIcon.vue";
+
 
 const { mdAndUp } = useDisplay();
 
 const icons = [
-  { name: "mdi-database", color: "text-orange-lighten-1", label: "MySQL" },
-  { name: "mdi-language-php", color: "text-blue-darken-2", label: "PHP" },
-  { name: "mdi-laravel", color: "text-red", label: "Laravel" },
-  { name: "mdi-language-javascript", color: "text-yellow ", label: "Javascript" },
-  { name: "mdi-vuejs", color: "text-green-lighten-1", label: "Vue" },
-  { name: "mdi-vuetify", color: "text-blue-darken-1", label: "Vuetify" },
-  { name: "mdi-tailwind", color: "text-blue-lighten-2", label: "Tailwind CSS" },
-  { name: "mdi-language-html5", color: "text-orange-darken-3", label: "HTML" },
-  { name: "mdi-language-css3", color: "text-blue", label: "CSS" },
-  { name: "mdi-git", color: "text-red-darken-1", label: "Git" },
-  { name: "mdi-github", label: "Github" },
-  { name: "mdi-api", color: "text-orange-lighten-1", label: "Postman" },
-  { name: "mdi-triangle", color: "primary", label: "Vercel" },
-  { name: "mdi-microsoft-visual-studio", color: "text-blue-lighten-1", label: "Visual Studio" },
+  { component: MySQLicon },
+  { component: PHPicon },
+  { component: LaravelIcon },
+  { component: JavascriptIcon },
+  { component: VueJSIcon },
+  { component: VuetifyIcon },
+  { component: TailwindIcon },
+  { component: HTMLIcon },
+  { component: CSSIcon },
+  { component: GitIcon },
+  { component: GithubIcon },
+  { component: PostmanIcon },
+  { component: VercelIcon },
+  { component: VSCodeIcon },
 ];
 
 const imageWidth = computed(() => (mdAndUp.value ? "26" : "34"));
@@ -83,6 +81,11 @@ const imageWidth = computed(() => (mdAndUp.value ? "26" : "34"));
 }
 .bg-card{
   background-color: 		#2b2d31!important;
+
+}
+.skills-card-bg{
+  background: #171a21;
+  border-radius: 15px!important;
 }
 
 @media (max-width: 700px) {
@@ -108,6 +111,10 @@ const imageWidth = computed(() => (mdAndUp.value ? "26" : "34"));
     height: auto;
     min-height: auto;
   }
+  .icon-size {
+  width: 40px;
+  height: 40px;
+}
 }
 
 </style>
