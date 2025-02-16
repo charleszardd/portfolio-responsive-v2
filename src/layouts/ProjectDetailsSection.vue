@@ -87,7 +87,7 @@
         <!-- Pagination Dots (Desktop/Tablet only) -->
         <v-row v-if="$vuetify.display.smAndUp" justify="center" class="mt-3">
           <v-icon class="mr-2" v-for="(project, index) in projects" :key="index" @click="goToSlide(index)" :class="{ 'active-dot': index === currentIndex }" icon>
-            <v-icon size="" height="" :color="index === currentIndex ? 'grey-lighten-2' : 'grey-darken-2'">mdi-rectangle</v-icon>
+            <v-icon size="" height="" :color="index === currentIndex ? 'grey-lighten-2' : 'grey-darken-2'">mdi-circle</v-icon>
           </v-icon>
         </v-row>
       </v-col>
