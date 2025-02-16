@@ -34,20 +34,20 @@
 <script setup>
 import { computed } from "vue";
 import { useDisplay } from "vuetify";
-import JavascriptIcon from "@/components/reusables/icons/JavascriptIcon.vue";
-import PHPicon from "@/components/reusables/icons/PHPicon.vue";
-import LaravelIcon from "@/components/reusables/icons/LaravelIcon.vue";
-import MySQLicon from "@/components/reusables/icons/MySQLicon.vue";
-import PostmanIcon from "@/components/reusables/icons/PostmanIcon.vue";
-import VercelIcon from "@/components/reusables/icons/VercelIcon.vue";
-import HTMLIcon from "@/components/reusables/icons/HTMLIcon.vue";
-import CSSIcon from "@/components/reusables/icons/CSSIcon.vue";
-import TailwindIcon from "@/components/reusables/icons/TailwindIcon.vue";
-import VueJSIcon from "@/components/reusables/icons/VueJSIcon.vue";
-import VuetifyIcon from "@/components/reusables/icons/VuetifyIcon.vue";
-import VSCodeIcon from "@/components/reusables/icons/VSCodeIcon.vue";
-import GitIcon from "@/components/reusables/icons/GitIcon.vue";
-import GithubIcon from "@/components/reusables/icons/GithubIcon.vue";
+import JavascriptIcon from "@/components/reusables/icons/Javascript.vue";
+import PHPicon from "@/components/reusables/icons/PHP.vue";
+import LaravelIcon from "@/components/reusables/icons/Laravel.vue";
+import MySQLicon from "@/components/reusables/icons/MySQL.vue";
+import PostmanIcon from "@/components/reusables/icons/Postman.vue";
+import VercelIcon from "@/components/reusables/icons/Vercel.vue";
+import HTMLIcon from "@/components/reusables/icons/HTML.vue";
+import CSSIcon from "@/components/reusables/icons/CSS.vue";
+import TailwindIcon from "@/components/reusables/icons/Tailwind.vue";
+import VueJSIcon from "@/components/reusables/icons/VueJS.vue";
+import VuetifyIcon from "@/components/reusables/icons/Vuetify.vue";
+import VSCodeIcon from "@/components/reusables/icons/VSCode.vue";
+import GitIcon from "@/components/reusables/icons/Git.vue";
+import GithubIcon from "@/components/reusables/icons/Github.vue";
 
 
 const { mdAndUp } = useDisplay();

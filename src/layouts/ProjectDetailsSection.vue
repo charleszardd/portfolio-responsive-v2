@@ -97,13 +97,13 @@
 
 <script setup>
 import { ref } from "vue";
-import PHPicon from "@/components/reusables/icons/PHPicon.vue";
-import MySQLicon from "@/components/reusables/icons/MySQLicon.vue";
-import LaravelIcon from "@/components/reusables/icons/LaravelIcon.vue";
-import VueJSIcon from "@/components/reusables/icons/VueJSIcon.vue";
-import VuetifyIcon from "@/components/reusables/icons/VuetifyIcon.vue";
-import JavascriptIcon from "@/components/reusables/icons/JavascriptIcon.vue";
-import CSSIcon from "@/components/reusables/icons/CSSIcon.vue";
+import PHPicon from "@/components/reusables/icons/PHP.vue";
+import MySQLicon from "@/components/reusables/icons/MySQL.vue";
+import LaravelIcon from "@/components/reusables/icons/Laravel.vue";
+import VueJSIcon from "@/components/reusables/icons/VueJS.vue";
+import VuetifyIcon from "@/components/reusables/icons/Vuetify.vue";
+import JavascriptIcon from "@/components/reusables/icons/Javascript.vue";
+import CSSIcon from "@/components/reusables/icons/CSS.vue";
 
 const currentIndex = ref(0);
 
