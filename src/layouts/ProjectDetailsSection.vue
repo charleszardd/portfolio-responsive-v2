@@ -1,13 +1,12 @@
 <template id="projectsSection">
-  <v-container class="h-screen custom-font px-5 px-lg-10" fluid>
-    <v-row class="px-3 px-lg-10 d-flex">
-      <v-col cols="12" class="pr-0 pr-lg-5 px-0">
+  <v-container class="h-screen custom-font px-10 px-lg-10" fluid>
+    <v-row class="px-0 px-lg-10 d-flex">
+      <v-col cols="12" class="pr-2 pr-lg-5 px-0">
         <h1 class="elevated-text mb-lg-5 mb-md-2 mb-10 custom-font text-center text-h4 font-weight-bold text-md-h3 text-lg-h3">
           Projects
         </h1>
         <p class="text-center text-grey-lighten-2">Showcasing My Journey: Personal Creations & Team Collaborations</p>
 
-        <!-- Desktop/Tablet View -->
         <v-row v-if="$vuetify.display.smAndUp" class="align-center mt-5 mb-5 ">
           <v-btn elevation="10" @click="prevSlide" class="blur-btn1 px-0" height="150" size="small">
             <v-icon class="btn-text text-h2">mdi-chevron-left</v-icon>
@@ -53,7 +52,6 @@
           </v-btn>
         </v-row>
 
-        <!-- Mobile View -->
         <v-row v-else class="projects-mobile mt-10 mb-10 pb-10">
           <v-col v-for="(project, index) in projects.slice(0, 3)" :key="index" cols="12" class="mb-10">
             <v-card elevation="10" class="mobile-card ">
@@ -84,7 +82,6 @@
       
         </v-row>
 
-        <!-- Pagination Dots (Desktop/Tablet only) -->
         <v-row v-if="$vuetify.display.smAndUp" justify="center" class="mt-3">
           <v-icon class="mr-2" v-for="(project, index) in projects" :key="index" @click="goToSlide(index)" :class="{ 'active-dot': index === currentIndex }" icon>
             <v-icon size="" height="" :color="index === currentIndex ? 'grey-lighten-2' : 'grey-darken-2'">mdi-circle</v-icon>
@@ -197,7 +194,7 @@ const goToSlide = (index) => {
   background: linear-gradient(to left, #171a21, #1b2838);
   height: auto;
   min-height: 100vh;
-  padding: 20px;
+  padding: 20em;
 }
 .bg-card{
   background: linear-gradient(to left, #171a21, #1b2838);
@@ -257,22 +254,22 @@ const goToSlide = (index) => {
   background: transparent!important;
   color: #66c0f4;
 }
-.mobile-card {
-  width: 100%;
-  background: transparent !important;
-}
-
 .mobile-img {
   width: 100%;
   height: auto;
-  aspect-ratio: 16/10;
-  object-fit: cover;
+  border-radius: 10px 10px 0 0;
+}
+
+.mobile-card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: 15px;
+  background: linear-gradient(to left, #171a21, #1b2838);
 }
 
 .mobile-details {
-  width: 100%;
-  padding: 1rem !important;
-  height: auto;
+  padding: 16px;
 }
 
 .bg-steam {
@@ -293,13 +290,6 @@ const goToSlide = (index) => {
   background: linear-gradient(to left, #1b2838, #171a21);
 }
 
-@media (min-width: 1400px) {
-  .project-wrapper {
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-}
-
 @media (max-width: 959px) {
   .card-img, .details-card {
     width: 100%;
@@ -314,11 +304,18 @@ const goToSlide = (index) => {
     min-height: 300px;
   }
 }
+@media (min-width: 1400px) {
+  .project-wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+}
 @media (max-width: 600px) {
   .h-screen{
     min-height: auto;
     height: auto;
-    padding-top:60em;
+    padding-top:67em;
+    padding-bottom: 70em;
   }
 
 }

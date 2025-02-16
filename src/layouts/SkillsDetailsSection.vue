@@ -1,39 +1,26 @@
 <template id="skillsSection">
-  <v-container class="h-screen px-5 px-lg-10" fluid>
-    <v-row class="px-10 pl-4">
-      <v-col data-aos="fade-up" data-aos-duration="3000" class="text-center" cols="12" lg="12">
-        <h1
-          class="elevated-text mb-lg-5 mt-lg-3 mb-md-2 mb-10 custom-font text-h4 font-weight-bold text-md-h3 text-lg-h3"
-        >
-          Skills & Tools
-        </h1>
-        <p class="text-subtitle-2 mb-5 mb-lg-10 custom-font text-lg-subtitle-1 text-grey-lighten-2">
-          Here are the technical skills I've honed and the tools I've used
-          throughout my experience.
-        </p>
+  <div class="py-10 py-lg-0">
+    <v-container class="h-screen custom-font px-10 px-lg-5" fluid>
+      <v-row data-aos="fade-up" data-aos-duration="3000" class="px-5 pr-5 pr-lg-10 d-flex flex-column align-center">
+        <v-col class="text-center mb-5" cols="12">
+          <h1 class="elevated-text mb-5 custom-font text-h4 font-weight-bold text-md-h3">Skills & Tools</h1>
+          <p class=" text-grey-lighten-2">
+            Here are the technical skills I've honed and the tools I've used throughout my experience.
+          </p>
+        </v-col>
 
-        <v-row class="mt-3 py-5 px-4 mb-2 skills-card-bg rounded-lg mt-lg-10 d-flex pr-1 pr-lg-4">
-  <v-col
-    class="d-flex justify-center flex-column px-0 px-lg-10"
-    cols="2"
-    lg="2"
-    v-for="icon in icons"
-    :key="icon.label"
-  >
-
-      <component elevation="10" :is="icon.component" class="icon-size my-5" />
-
-  
-  </v-col>
-</v-row>
-
-      </v-col>
-    </v-row>
-  </v-container>
+        <!-- Skills Grid -->
+        <v-row class="skills-card-bg rounded-lg py-5 px-4 d-flex justify-center flex-wrap">
+          <v-col v-for="icon in icons" :key="icon.label" class="d-flex justify-center" cols="auto">
+            <component :is="icon.component" class="icon-size my-5" />
+          </v-col>
+        </v-row>
+      </v-row>
+    </v-container>
+  </div>
 </template>
+
 <script setup>
-import { computed } from "vue";
-import { useDisplay } from "vuetify";
 import JavascriptIcon from "@/components/reusables/icons/Javascript.vue";
 import PHPicon from "@/components/reusables/icons/PHP.vue";
 import LaravelIcon from "@/components/reusables/icons/Laravel.vue";
@@ -48,9 +35,6 @@ import VuetifyIcon from "@/components/reusables/icons/Vuetify.vue";
 import VSCodeIcon from "@/components/reusables/icons/VSCode.vue";
 import GitIcon from "@/components/reusables/icons/Git.vue";
 import GithubIcon from "@/components/reusables/icons/Github.vue";
-
-
-const { mdAndUp } = useDisplay();
 
 const icons = [
   { component: MySQLicon },
@@ -68,53 +52,24 @@ const icons = [
   { component: VercelIcon },
   { component: VSCodeIcon },
 ];
-
-const imageWidth = computed(() => (mdAndUp.value ? "26" : "34"));
 </script>
+
 <style scoped>
-.h-screen{
-  align-items: center;
+.h-screen {
   display: flex;
-  background: linear-gradient(to left ,#171a21, #1b2838 );
-  height: auto;
-  min-height: 100vh;
+  align-items: center;
+  background: linear-gradient(to left, #171a21, #1b2838);
 }
-.bg-card{
-  background-color: 		#2b2d31!important;
-
-}
-.skills-card-bg{
+.skills-card-bg {
   background: #171a21;
-  border-radius: 15px!important;
+  border-radius: 15px !important;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
-
-@media (max-width: 700px) {
-  .image-width {
-    width:  34px;
-
+@media (max-width: 600px){
+  .py-10{
+    padding-top: 4rem!important;
   }
 }
-@media (max-width: 1000px) {
-  .image-width {
-    width:  32px;
-
-  } 
-}
-@media (max-width: 1100px) {
-  .image-width {
-    width:  34px;
-
-  }
-}
-@media (max-width: 600px) {
-  .h-screen{
-    height: auto;
-    min-height: auto;
-  }
-  .icon-size {
-  width: 40px;
-  height: 40px;
-}
-}
-
 </style>

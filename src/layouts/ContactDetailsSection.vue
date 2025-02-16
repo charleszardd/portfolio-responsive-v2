@@ -1,122 +1,119 @@
 <template id="contactSection">
-  <v-container class="h-screen custom-font" fluid>
-    <v-row class="px-0 contact-container px-lg-10">
-      <v-col
-        v-for="contactDetails in contacts"
-        :key="contactDetails"
-        cols="12"
-        class="text-center d-flex flex-column justify-center pr-0 pr-lg-5 px-0"
-      >
-        <div class="px-lg-5 px-2">
-          <h1 class="text-h4 elevated-text font-weight-bold text-md-h3 text-lg-h3">
-            {{ contactDetails.title }}
-          </h1>
-          <p class="mt-2 text-grey-lighten-2">{{ contactDetails.subtitle }}</p>
-        </div>
-
-        <div class="px-0 px-lg-10 mt-5 d-flex justify-center">
-          <v-card elevation="10" class="contact-card py-5 px-2 px-lg-5">
-            <v-card-title class="mb-5 mt-3 text-wrap">
+  <div class="py-10 ">
+    <v-container class="h-screen px-5 custom-font align-center justify-center" fluid>
+      <v-col class="text-center">
+        <h1
+          class="text-h4 elevated-text font-weight-bold text-md-h3 text-lg-h3"
+        >
+          {{ contactHeader.title }}
+        </h1>
+        <p class="mt-2 text-grey-lighten-2">{{ contactHeader.subtitle }}</p>
+      </v-col>
+      <v-row class="justify-center w-100">
+        
+        <v-col class="px-5 pr-0 pr-lg-0" cols="12" md="10" lg="8">
+          <v-card elevation="10" class="contact-card py-5 px-5 text-center">
+            <v-card-title class="mb-5 mt-3 text-wrap text-center">
               Questions? Ideas? Let’s Chat! 💡
             </v-card-title>
             <v-form ref="formRef">
-              <v-col>
-                <v-text-field
-                  variant="outlined"
-                  :error="(showHint || fieldTouched.name) && !form.name.trim()"
-                  :error-messages="
-                    (showHint || fieldTouched.name) && !form.name.trim()
-                      ? 'Please fill out this field'
-                      : ''
-                  "
-                  class="text-field"
-                  v-model="form.name"
-                  @keyup.enter="handleSendMessage"
-                  label="Your name (e.g. Walter White)"
-                  @input="handleInput('name')"
-                ></v-text-field>
+              <v-text-field
+                variant="outlined"
+                class="text-field"
+                :error="(showHint || fieldTouched.name) && !form.name.trim()"
+                :error-messages="
+                  (showHint || fieldTouched.name) && !form.name.trim()
+                    ? 'Please fill out this field'
+                    : ''
+                "
+                v-model="form.name"
+                @keyup.enter="handleSendMessage"
+                label="Your name (e.g. Walter White)"
+                @input="handleInput('name')"
+              ></v-text-field>
 
-                <v-text-field
-                  variant="outlined"
-                  :error="
-                    (showHint && !form.email.trim()) ||
-                    (fieldTouched.email && form.email.trim() && emailError)
-                  "
-                  :error-messages="
-                    (showHint || fieldTouched.email) && !form.email.trim()
-                      ? 'Please fill out this field'
-                      : '' || getEmailErrorMessage
-                  "
-                  class="text-field"
-                  v-model="form.email"
-                  @keyup.enter="handleSendMessage"
-                  label="Your email (e.g. example@gmail.com)"
-                  @input="handleInput('email')"
-                ></v-text-field>
+              <v-text-field
+                variant="outlined"
+                class="text-field"
+                :error="
+                  (showHint && !form.email.trim()) ||
+                  (fieldTouched.email && form.email.trim() && emailError)
+                "
+                :error-messages="
+                  (showHint || fieldTouched.email) && !form.email.trim()
+                    ? 'Please fill out this field'
+                    : '' || getEmailErrorMessage
+                "
+                v-model="form.email"
+                @keyup.enter="handleSendMessage"
+                label="Your email (e.g. example@gmail.com)"
+                @input="handleInput('email')"
+              ></v-text-field>
 
-                <v-textarea
-                  variant="outlined"
-                  :error="
-                    (showHint || fieldTouched.message) && !form.message.trim()
-                  "
-                  :error-messages="
-                    (showHint || fieldTouched.message) && !form.message.trim()
-                      ? 'Please fill out this field'
-                      : ''
-                  "
-                  class="text-field"
-                  v-model="form.message"
-                  @keyup.enter="handleSendMessage"
-                  label="Message me something..."
-                  @input="handleInput('message')"
-                ></v-textarea>
+              <v-textarea
+                variant="outlined"
+                class="text-field"
+                :error="
+                  (showHint || fieldTouched.message) && !form.message.trim()
+                "
+                :error-messages="
+                  (showHint || fieldTouched.message) && !form.message.trim()
+                    ? 'Please fill out this field'
+                    : ''
+                "
+                v-model="form.message"
+                @keyup.enter="handleSendMessage"
+                label="Message me something..."
+                @input="handleInput('message')"
+              ></v-textarea>
 
-                <Button
-                  :loading="loading"
-                  @click="handleSendMessage"
-                  height="55"
-                  class="w-100 bg-blue-lighten-1 mt-2"
-                  text="Send"
-                />
-              </v-col>
+              <Button
+                :loading="loading"
+                @click="handleSendMessage"
+                height="55"
+                class="w-100 bg-blue-lighten-1 mt-2"
+                text="Send"
+              />
             </v-form>
           </v-card>
+        </v-col>
 
-          <!-- <Modal :modelValue="isModalOpen" @update:modelValue="isModalOpen = $event" title="Contact me" message="Call me at +639 638623607"/> -->
-
-          <v-card
-            elevation="10"
-            class="social-links-card ml-5 d-flex flex-column"
-          >
-            <v-col
-              class="d-flex flex-column flex-grow-1"
-              v-for="socialLinks in socials"
-              :key="socialLinks"
-            >
-              <v-card
-                :class="socialLinks.color"
-                elevation="10"
-                class="social-card d-flex align-center justify-center flex-grow-1"
-              >
-                <v-card-title
-                  class="cursor-pointer"
-                  @click="
-                    socialLinks.url
-                      ? goToSite(socialLinks.url)
+        <v-col cols="12" md="10" lg="8" class="d-flex pr-0 px-5 justify-center">
+  <v-card
+    elevation="10"
+    class="social-links-card px-4 py-3 d-flex flex-wrap justify-center align-center flex-grow-1"
+  >
+    <v-row no-gutters class="w-100 justify-center">
+      <v-col
+        v-for="social in socials"
+        :key="social.link"
+        cols="auto"
+        sm="2"
+        class="d-flex justify-center px-2"
+      >
+        <v-card
+          :class="social.color"
+          elevation="10"
+          class="social-card d-flex align-center justify-center w-100"
+          @click="
+                    social.url
+                      ? goToSite(social.url)
                       : handlePhoneClick()
                   "
-                >
-                  <v-icon>{{ socialLinks.link }}</v-icon>
-                </v-card-title>
-              </v-card>
-            </v-col>
-          </v-card>
-        </div>
+        >
+          <v-icon class="text-h4">{{ social.link }}</v-icon>
+        </v-card>
       </v-col>
     </v-row>
-  </v-container>
+  </v-card>
+</v-col>
+
+      </v-row>
+    </v-container>
+  </div>
 </template>
-  
+
+
 <script setup>
 import { computed, ref } from "vue";
 import { sendMessageToMe } from "@/services/EmailSenderService";
@@ -129,12 +126,10 @@ const fieldTouched = ref({
   message: false,
 });
 
-const contacts = ref([
-  {
-    title: "Interested Enough ?",
-    subtitle: "Tickled Your Curiosity? Drop Me a Message!",
-  },
-]);
+const contactHeader = ref({
+  title: "Interested Enough ?",
+  subtitle: "Tickled Your Curiosity? Drop Me a Message!",
+});
 
 const form = ref({
   name: "",
@@ -228,64 +223,47 @@ const handlePhoneClick = () => {
   window.location.href = "sms: +639638623607";
 };
 </script>
-  
-  <style scoped>
+
+<style scoped>
 .h-screen {
-  display: flex;
   align-items: center;
   background: linear-gradient(to left, #171a21, #1b2838);
-  height: auto;
-  min-height: 100vh;
 }
 
 .contact-card {
-  width: 66%;
-  max-width: 1000px;
   background-color: #171a21;
   border-radius: 15px;
+  width: 100%;
 }
+
 .social-links-card {
   background-color: #171a21;
   border-radius: 15px;
-  width: 9%;
+  width: 50%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
+
 .social-card {
   background-color: #171a21;
   transition: transform 0.3s ease-in-out;
-}
-.social-card:hover {
-  transform: scale(1.5);
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-@media (max-width: 1400px) {
-  .contact-card {
-    width: 66%;
-    max-width: 600px;
-    height: auto;
-  }
-  .social-links-card {
-  background-color: #171a21;
-  border-radius: 15px;
-  width: 9%;
+.social-card:hover {
+  transform: scale(1.2);
 }
-  .h-screen {
-    padding-top: 10em;
-  }
-  .contact-container{
-    padding-bottom: 1em;
-  }
+@media (max-width: 600px){
+  
+.social-card{
+  padding-left: .3rem;
+  padding-right: .3rem;
+
 }
-@media (max-width: 600px) {
-  .h-screen {
-    height: auto;
-    min-height: auto;
-    padding-bottom: 50px;
-    padding-top: 75em;
-  }
-  .contact-card {
-    width: 90%;
-    height: auto;
-  }
 }
 </style>
-  

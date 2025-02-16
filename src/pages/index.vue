@@ -1,11 +1,12 @@
 <template>
-
+<v-app class="bg-color">
    <LandingPageDetails id="homeSection" @scroll-to-section="onScrollToSection" @open-chat="openChat"/>
    <ChatContainer v-if="isChatOpen" @close-chat="isChatOpen = false"/>
-  <AboutDetailsSection ref="aboutSection" id="aboutSection"/>
-  <SkillsDetailsSection id="skillsSection"/>
-  <ProjectDetailsSection id="projectsSection"/>
-  <ContactDetailsSection id="contactSection"/>
+   <AboutDetailsSection ref="aboutSection" id="aboutSection"/>
+   <SkillsDetailsSection id="skillsSection"/>
+   <ProjectDetailsSection id="projectsSection"/>
+   <ContactDetailsSection id="contactSection"/>
+</v-app>
 </template>
 
 <script setup>
@@ -29,3 +30,8 @@ const onScrollToSection = (section) => {
 }
 
 </script>
+<style scoped>
+.bg-color{
+  background: linear-gradient(to left, #171a21, #1b2838);
+}
+</style>
