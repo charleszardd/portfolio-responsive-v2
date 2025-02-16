@@ -1,14 +1,15 @@
 <template id="projectsSection">
-  <v-container class="h-screen px-5 px-lg-10" fluid>
+  <v-container class="h-screen custom-font px-5 px-lg-10" fluid>
     <v-row class="px-3 px-lg-10 d-flex">
       <v-col cols="12" class="pr-0 pr-lg-5 px-0">
         <h1 class="elevated-text mb-lg-5 mb-md-2 mb-10 custom-font text-center text-h4 font-weight-bold text-md-h3 text-lg-h3">
           Projects
         </h1>
+        <p class="text-center text-grey-lighten-2">Showcasing My Journey: Personal Creations & Team Collaborations</p>
 
         <!-- Desktop/Tablet View -->
         <v-row v-if="$vuetify.display.smAndUp" class="align-center mt-5 mb-5 ">
-          <v-btn @click="prevSlide" class="blur-btn1 px-0" height="150" size="small">
+          <v-btn elevation="10" @click="prevSlide" class="blur-btn1 px-0" height="150" size="small">
             <v-icon class="btn-text text-h2">mdi-chevron-left</v-icon>
           </v-btn>
 
@@ -20,7 +21,7 @@
                 </v-fade-transition>
               </v-card>
 
-              <div class="details-card custom-font bg-steam pa-2 px-4 d-flex flex-column">
+              <v-card elevation="10" class="details-card custom-font bg-steam pa-2 px-4 d-flex flex-column">
                 <span class="text-h5 mt-2 font-weight-bold">{{ projects[currentIndex].title }}</span>
                 <p class="text-title text-grey-lighten-1 text-wrap mt-5">
                   {{ projects[currentIndex].description }}
@@ -44,11 +45,11 @@
                     <v-icon v-if="link.github" @click="goToLink(link.repositoryLink)" class="cursor-pointer text-h4">{{ link.github }}</v-icon>
                   </v-col>
                 </v-row>
-              </div>
+              </v-card>
             </div>
           </v-col>
 
-          <v-btn @click="nextSlide" size="small" height="150" class="blur-btn2 px-0">
+          <v-btn elevation="10" @click="nextSlide" size="small" height="150" class="blur-btn2 px-0">
             <v-icon class="btn-text text-h2">mdi-chevron-right</v-icon>
           </v-btn>
         </v-row>
@@ -268,9 +269,6 @@ const goToSlide = (index) => {
 .bg-steam {
   background-color: #1b2838;
 }
-
-
-
 .text-link:hover {
   text-decoration: underline;
   transition: all 0.7s ease-in-out;
