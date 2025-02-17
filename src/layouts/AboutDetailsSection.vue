@@ -44,13 +44,11 @@ onMounted(() => {
 .about-details {
     padding-left: 0;
 }
-
 .grid-container {
     position: relative;
     background: linear-gradient(to left, #171a21, #1b2838);
     overflow: hidden;
 }
-
 .about-container {
     position: relative;
     display: flex;
@@ -59,13 +57,11 @@ onMounted(() => {
     align-items: center;
     min-height: 100vh;
 }
-
 .bg-steam {
     background-color: #1b2838;
     height: auto;
     min-height: 100vh;
 }
-
 .slogan-details {
     display: flex;
     justify-content: center;
