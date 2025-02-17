@@ -2,7 +2,7 @@
   <v-container class="h-screen custom-font px-10 px-lg-10" fluid>
     <v-row class="px-0 px-lg-10 d-flex">
       <v-col cols="12" class="pr-2 pr-lg-5 px-0">
-        <h1 class="elevated-text mb-lg-5 mb-md-2 mb-10 custom-font text-center text-h4 font-weight-bold text-md-h3 text-lg-h3">
+        <h1 class="elevated-text mb-lg-5 mb-md-2 mb-10 custom-font text-center text-h4 font-weight-bold text-md-h4 text-lg-h3">
           Projects
         </h1>
         <p class="text-center text-grey-lighten-2">Showcasing My Journey: Personal Creations & Team Collaborations</p>
@@ -304,10 +304,13 @@ const goToSlide = (index) => {
     min-height: 300px;
   }
 }
-@media (min-width: 1400px) {
+@media (max-width: 1400px) {
   .project-wrapper {
     max-width: 1200px;
     margin: 0 auto;
+  }
+  .h-screen{
+    padding-top: 23em;
   }
 }
 @media (max-width: 600px) {
