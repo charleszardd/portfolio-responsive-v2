@@ -97,7 +97,7 @@
               @click="sendMessage"
               height="47"
               width="30"
-              class="send-btn ml-2"
+              :class="['send-btn ml-2', { 'active': userMessage.trim().length > 0 }]"
             >
               <v-icon>mdi-send</v-icon>
             </v-btn>
@@ -204,7 +204,11 @@ marked.setOptions({
   border: 2px solid #66c0f4;
 }
 .send-btn {
-  background: linear-gradient(to left, #3268e6, #66c0f4);
+  background: #423f3f;
+  transition: background 0.5s ease;
+}
+.send-btn.active {
+  background: linear-gradient(to left, #3268e6, #66c0f4); 
 }
 .loading-indicator {
   position: absolute;
