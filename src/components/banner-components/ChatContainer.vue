@@ -18,6 +18,7 @@
           />
         </div>
         <div
+          ref="messagesContainer"
           class="messages-container"
           :class="{ 'welcome-active': chatHistory.length < 1 }"
         >
@@ -107,17 +108,29 @@
   </v-row>
 </template>
   
-  <script setup>
+<script setup>
 import { sendMessageToAI } from "../../services/GenerativeAiService";
 import LottieAnimationFiles from "@/components/reusables/LottieAnimationFiles.vue";
 import LoadTyping from "@/lottie-animation/LoadTyping.json";
-import { ref } from "vue";
+import { ref, watch, nextTick } from "vue";
 import { marked } from 'marked';
 
 const animationData = ref(LoadTyping);
 const userMessage = ref("");
 const chatHistory = ref([]);
 const isLoading = ref(false);
+const messagesContainer = ref(null);
+
+const scrollToBottom = async () => {
+  await nextTick();
+  if (messagesContainer.value) {
+    messagesContainer.value.scrollTop = messagesContainer.value.scrollHeight;
+  }
+};
+
+watch(chatHistory, () => {
+  scrollToBottom();
+}, { deep: true });
 
 const sendMessage = async () => {
   if (!userMessage.value.trim() || isLoading.value) return;
@@ -128,7 +141,7 @@ const sendMessage = async () => {
   try {
     chatHistory.value.push({ role: "user", text: message });
     userMessage.value = "";
-
+    
     const response = await sendMessageToAI(message);
     chatHistory.value.push({
       role: "model",
@@ -145,37 +158,38 @@ const sendMessage = async () => {
   }
 };
 
-  const chats = ([
-    { text: 'Tell me something about Charles' },
-   { text: 'Tell me about his projects' },
-    { text: 'Why should we hire him?' },
-   ]);
+const chats = ([
+  { text: 'Tell me something about Charles' },
+  { text: 'Tell me about his projects' },
+  { text: 'Why should we hire him?' },
+]);
 
-   const handleSendSelectedMessage = async (message) => {
+const handleSendSelectedMessage = async (message) => {
   if (!message || isLoading.value) return;
 
   chatHistory.value.push({ role: "user", text: message });
 
   try {
-     isLoading.value = true;
+    isLoading.value = true;
     const response = await sendMessageToAI(message);
-     chatHistory.value.push({ role: "model", text: response.text });
-   } catch (error) {
-     console.error("Error in chat:", error);
-     chatHistory.value.push({
-       role: "model",
-       text: "Service is currently overloaded. Please try again later.",
+    chatHistory.value.push({ role: "model", text: response.text });
+  } catch (error) {
+    console.error("Error in chat:", error);
+    chatHistory.value.push({
+      role: "model",
+      text: "Service is currently overloaded. Please try again later.",
     });
-   } finally {
-     isLoading.value = false;
-   }
+  } finally {
+    isLoading.value = false;
+  }
 };
 
 const parseMarkdown = (text) => {
   return marked(text);
 };
+
 marked.setOptions({
-  gfm: false, // Disable GitHub-Flavored Markdown
+  gfm: false,
 });
 </script>
   
@@ -246,6 +260,7 @@ marked.setOptions({
   display: flex;
   height: calc(100vh - 140px);
   border: 1px solid #171a21;
+  scroll-behavior: smooth; /* Add smooth scrolling */
 }
 .messages-container.welcome-active {
   align-items: center;
