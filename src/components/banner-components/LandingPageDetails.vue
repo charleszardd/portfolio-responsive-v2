@@ -13,7 +13,8 @@
       </v-col>
       <v-col v-else class="hero-container">
         <div class="profile rounded-lg mb-10 d-flex justify-center align-center">
-          <img class="profile-img" src="/charles.webp" alt="" />
+          <v-icon class="text-h1">mdi-help</v-icon>
+          <!-- <img class="profile-img" src="/charles.webp" alt="" /> -->
         </div>
         <div
           class="profile-details d-flex justify-center text-center flex-column"
@@ -89,7 +90,7 @@ onMounted(() => {
   width: 200px;
   height: 200px;
   background-color: #272727;
-  border: 2px solid #66c0f4 !important;
+  border: 3px solid grey !important;
   overflow: hidden;
 }
 .profile-img {
