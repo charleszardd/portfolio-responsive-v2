@@ -264,7 +264,7 @@ marked.setOptions({
   display: flex;
   height: calc(100vh - 140px);
   border: 1px solid #171a21;
-  scroll-behavior: smooth; /* Add smooth scrolling */
+  scroll-behavior: smooth; 
 }
 .messages-container.welcome-active {
   align-items: center;
