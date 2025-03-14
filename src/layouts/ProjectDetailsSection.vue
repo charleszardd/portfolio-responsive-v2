@@ -129,7 +129,7 @@ const projects = ref([
     ],
   },
   {
-    img: "/ai-chatbot.webp",
+    img: "/aichat-ss.webp",
     title: "Personalized Japanese Actress Chatbot AI",
     description:
       "A Gemini API-powered AI chatbot specializing in Japanese actresses, providing accurate and engaging responses using curated JAV codes and a large scraped dataset from Django Python.",
