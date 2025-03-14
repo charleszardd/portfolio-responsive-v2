@@ -101,6 +101,8 @@ import VueJSIcon from "@/components/reusables/icons/VueJS.vue";
 import VuetifyIcon from "@/components/reusables/icons/Vuetify.vue";
 import JavascriptIcon from "@/components/reusables/icons/Javascript.vue";
 import CSSIcon from "@/components/reusables/icons/CSS.vue";
+import Python from "@/components/reusables/icons/Python.vue";
+import SQLite from "@/components/reusables/icons/SQLite.vue";
 
 const currentIndex = ref(0);
 
@@ -130,20 +132,22 @@ const projects = ref([
     img: "/ai-chatbot.webp",
     title: "Personalized Japanese Actress Chatbot AI",
     description:
-      "A Gemini API-powered chatbot AI, personalized to provide accurate and engaging answers about Japanese actresses using curated data.",
+      "A Gemini API-powered AI chatbot specializing in Japanese actresses, providing accurate and engaging responses using curated JAV codes and a large scraped dataset from Django Python.",
     languages: [
       { component: VueJSIcon },
       { component: VuetifyIcon },
       { component: JavascriptIcon },
       { component: CSSIcon },
+      { component: Python },
+      { component: SQLite },
     ],
     links: [
       {
-        text: "View website",
-        icon: "mdi-open-in-new",
+        // text: "View website",
+        // icon: "mdi-open-in-new",
         github: "mdi-github",
         repositoryLink: "https://github.com/charleszardd/ai-chatbot-jav",
-        websiteLink: "https://ai-chatbot-jav.vercel.app/",
+        // websiteLink: "https://ai-chatbot-jav.vercel.app/",
       },
     ],
   },
