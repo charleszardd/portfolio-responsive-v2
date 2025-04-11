@@ -65,9 +65,12 @@
 
                 <v-row class="mt-5">
                   <v-col v-for="(link, index) in project.links" :key="index" class="d-flex align-center justify-space-between">
-                    <span @click="goToLink(link.websiteLink)" class="text-link text-subtitle-2">
+                    <span :class="['text-subtitle-2', link.websiteLink ? 'text-link cursor-pointer' : 'text-gray-400 cursor-default pointer-events-none'
+                      ]"
+                      @click="link.websiteLink && goToLink(link.websiteLink)"
+                    >
                       {{ link.text }}
-                      <v-icon class="ml-2">{{ link.icon }}</v-icon>
+                      <v-icon class="ml-2 icon-link">{{ link.icon }}</v-icon>
                     </span>
                     <v-icon v-if="link.github" @click="goToLink(link.repositoryLink)" class="text-h4">{{ link.github }}</v-icon>
                   </v-col>
@@ -171,6 +174,27 @@ const projects = ref([
       },
     ],
   },
+  {
+    img: "/wealthme.webp",
+    title: "WealthME",
+    description:
+      "WealthMe is a web application that helps users track their financial activities. It features an AI-powered financial adviser, available exclusively to subscribers, which analyzes users' current balances and offers personalized suggestions to improve financial outcomes.",
+    languages: [
+      { component: PHPicon },
+      { component: LaravelIcon },
+      { component: MySQLicon },
+      { component: VueJSIcon },
+      { component: VuetifyIcon },
+      { component: JavascriptIcon },
+    ],
+    links: [
+      {
+        text: "View website",
+        icon: "mdi-open-in-new",
+        websiteLink: "https://wealthme.site",
+      },
+    ],
+  },
 ]);
 
 const goToLink = (url) => {
@@ -248,6 +272,12 @@ const goToSlide = (index) => {
   left: 0;
 }
 
+.text-link:hover, .link-icon:hover{
+  color:#0970ac;
+  text-decoration: underline;
+  transition: all 0.3s ease-in-out;
+}
+
 .projects-mobile {
   height: auto;
   min-height: auto;
@@ -278,10 +308,6 @@ const goToSlide = (index) => {
 
 .bg-steam {
   background-color: #171a21;
-}
-.text-link:hover {
-  text-decoration: underline;
-  transition: all 0.7s ease-in-out;
 }
 
 .blur-btn1 {
