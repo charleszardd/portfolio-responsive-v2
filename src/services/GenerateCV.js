@@ -2,106 +2,112 @@ import { jsPDF } from "jspdf";
 
 export const generateCV = () => {
   const doc = new jsPDF();
+  const spacing = 6;
+  let y = 10;
 
-  // Title
+  // Name (Bold, Centered)
   doc.setFont("helvetica", "bold");
   doc.setFontSize(16);
-  doc.text("CURRICULUM VITAE", 10, 10);
+  doc.text("CHARLES DAVID P. CASEÑAS", 105, y, { align: "center" });
+  y += spacing + 2;
 
-  // Section: Personal Data
-  doc.setFontSize(12);
-  doc.text("Personal Data", 10, 20);
-  doc.line(10, 22, 200, 22); 
-
-  const marginX = 10;
-  const marginY = 30;
-  const spacing = 6; 
-
-  const personalData = [
-    { label: "Name:", value: "Charles David P. Caseñas" },
-    { label: "Email:", value: "casenascharles@gmail.com" },
-    { label: "Github:", value: "https://github.com/charleszardd" },
-    { label: "Status:", value: "Single" },
-    { label: "Date of Birth:", value: "October 9, 2002" },
-    { label: "Nationality:", value: "Filipino" },
-    { label: "Religion:", value: "Roman Catholic" },
-    { label: "Contact No.:", value: "09638623607" },
-    { label: "Address:", value: "Tajao, Pinamungajan, Cebu" },
+  // Contact & Links (Centered)
+  doc.setFont("helvetica", "normal");
+  doc.setFontSize(11);
+  const contactAndAdressInfo = [
+    "Tajao, Pinamungajan, Cebu",
+    "+63 9638623607",
+    "casenascharles@gmail.com",
+    "casenascharles.vercel.app"
   ];
-  
-  personalData.forEach((item, index) => {
-    const yPosition = marginY + index * spacing;
-  
-    doc.setFont("helvetica", "bold"); 
-    doc.text(item.label, marginX, yPosition);
-  
-    doc.setFont("helvetica", "normal"); 
-    doc.text(item.value, marginX + 35, yPosition); 
+  contactAndAdressInfo.forEach(info => {
+    doc.text(info, 10, y);
+    y += spacing;
   });
 
-  const imageX = 150; 
-  const imageY = marginY; 
-  const imageWidth = 50; 
-  const imageHeight = 50; 
-  const imageUrl = "/pfp.png"; 
-
-  doc.addImage(imageUrl, "PNG", imageX, imageY, imageWidth, imageHeight);
-
-  // Section: Technical Skills
+  // Summary
+  y += spacing;
   doc.setFont("helvetica", "bold");
   doc.setFontSize(12);
-  doc.text("Technical Skills", 10, 90);
-  doc.line(10, 92, 200, 92);
-  
+  doc.text("Summary", 10, y);
+  doc.line(10, y + 2, 200, y + 2);
+  y += spacing + 2;
+
+  doc.setFont("helvetica", "normal");
+  doc.setFontSize(11);
+  const summary = `Experienced in building Web Apps and REST APIs with Laravel and Vue.js, prioritizing clean and maintainable code. Led a team of trainees during OJT in an Agile environment, contributing to the full software development life cycle. Skilled in MySQL, Tailwind, JavaScript, PHP, and Git. A team player, eager to learn, and passionate about software development.`;
+  doc.text(doc.splitTextToSize(summary, 190), 10, y);
+  y += spacing * 4;
+
+  // Work Experience
+  doc.setFont("helvetica", "bold");
+  doc.setFontSize(12);
+  doc.text("Work Experience", 10, y);
+  doc.line(10, y + 2, 200, y + 2);
+  y += spacing + 2;
+
+  doc.setFont("helvetica", "normal");
+  doc.setFontSize(11);
+  doc.text("Software Engineer Trainee", 10, y);
+  doc.text("Passafund — Poblacion, Toledo City, Cebu", 10, y + spacing);
+  doc.text("July 2024 – January 2025", 160, y + spacing);
+  y += spacing * 2;
+
+  const workDetails = [
+    "• Developed a Quiz Game App from project proposal to launch using Vue.js, Laravel, and MySQL, leading the conceptualization and wireframing.",
+    "• Led a team of seven trainees, managing sprint reports, sprint plans, task assignments, and cross-team communication while ensuring project success in an agile environment.",
+    "• Applied Clean Code principles while developing app features, managing version control (Git), and conducting manual testing."
+  ];
+  doc.text(doc.splitTextToSize(workDetails.join("\n"), 190), 10, y);
+  y += spacing * 6;
+
+  // Education
+  doc.setFont("helvetica", "bold");
+  doc.setFontSize(12);
+  doc.text("Education", 10, y);
+  doc.line(10, y + 2, 200, y + 2);
+  y += spacing + 2;
+
+  doc.setFont("helvetica", "normal");
+  doc.setFontSize(11);
+  doc.text("Bachelor of Science in Information Technology", 10, y);
+  doc.text("Consolatrix College of Toledo City, Inc.", 10, y + spacing);
+  doc.text("August 2021 – April 2025", 160, y + spacing);
+  y += spacing * 2;
+
+  doc.text("Computer System Servicing", 10, y);
+  doc.text("Bato National High School", 10, y + spacing);
+  doc.text("June 2018 – March 2020", 160, y + spacing);
+  y += spacing * 2;
+
+  // Skills
+  doc.setFont("helvetica", "bold");
+  doc.setFontSize(12);
+  doc.text("Skills", 10, y);
+  doc.line(10, y + 2, 200, y + 2);
+  y += spacing + 2;
+
   doc.setFont("helvetica", "normal");
   doc.setFontSize(11);
   const skills = [
-    "I have experience with:",
-    "• PHP, Laravel",
-    "• Vue.js, Vuetify",
-    "• JavaScript, HTML, CSS (Tailwind CSS)",
-    "• SQL (Structured Query Language)",
-    "• Git (version control)",
-    "• APIs and using Postman for testing and debugging",
+    "• Laravel",
+    "• Vue.js",
+    "• MySQL",
+    "• Tailwind CSS",
+    "• JavaScript",
+    "• PHP",
+    "• Git",
+    "• Postman",
+    "• Agile Methodologies",
+    "• Problem Solving",
+    "• Teamwork",
+    "• Attention to Detail"
   ];
-
-  skills.forEach((text, index) => {
-    doc.text(text, 10, 100 + index * spacing);
+  skills.forEach(skill => {
+    doc.text(skill, 10, y);
+    y += spacing;
   });
 
-  // Section: OJT Training
-  doc.setFont("helvetica", "bold");
-  doc.setFontSize(12);
-  doc.text("OJT Training", 10, 150);
-  doc.line(10, 152, 200, 152);
-
-  doc.setFont("helvetica", "normal");
-  doc.setFontSize(11);
-  const ojtText = `I successfully completed my On-the-Job Training (OJT) at Passafund, 
-  where I worked on developing a CMS studio using Laravel and Vue.js with Vuetify. 
-  During my training, I also gained hands-on experience in Agile methodologies 
-  and applied clean code practices throughout the project.`;
-
-  doc.text(doc.splitTextToSize(ojtText, 180), 10, 160);
-
-  // Section: Educational Background
-  doc.setFont("helvetica", "bold");
-  doc.setFontSize(12);
-  doc.text("Educational Background", 10, 188);
-  doc.line(10, 190, 200, 190);
-
-  doc.setFont("helvetica", "normal");
-  doc.setFontSize(11);
-  const education = [
-    "College: Consolatrix College of Toledo City Inc. (2021 - 2025)",
-    "Senior High School: Bato National High School (2019 - 2021)",
-    "Junior High School: Santa Monica Academy (2016 - 2019)",
-    "Elementary: Tajao Central School (2010 - 2016)",
-  ];
-
-  education.forEach((text, index) => {
-    doc.text(text, 10, 198 + index * spacing);
-  });
-
-  doc.save("Charles_Caseñas_CV.pdf");
+  // Save PDF
+  doc.save("Charles_David_P_Casenas_CV.pdf");
 };
