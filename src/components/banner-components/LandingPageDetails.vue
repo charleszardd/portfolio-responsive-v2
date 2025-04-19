@@ -13,8 +13,8 @@
       </v-col>
       <v-col v-else class="hero-container">
         <div class="profile rounded-lg mb-10 d-flex justify-center align-center">
-          <v-icon class="text-h1">mdi-help</v-icon>
-          <!-- <img class="profile-img" src="/charles.webp" alt="" /> -->
+          <!-- <v-icon class="text-h1">mdi-help</v-icon> -->
+          <img class="profile-img" src="/cdc.webp" alt="" /> 
         </div>
         <div
           class="profile-details d-flex justify-center text-center flex-column"
@@ -73,7 +73,8 @@ const loading = ref(true);
 const profile = {
   name: "Charles David P. Caseñas",
   description:
-    "🙶 Fuel your hunger for growth with the same passion you have for food. 🗿 🙷",
+    // "🙶 Fuel your hunger for growth with the same passion you have for food. 🗿 🙷",
+    "Backend Developer | Laravel & Vue.js | Aspiring Full-Stack Software Engineer",
 };
 
 onMounted(() => {
