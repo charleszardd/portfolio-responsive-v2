@@ -15,7 +15,7 @@ export const generateCV = () => {
   doc.setFont("helvetica", "normal");
   doc.setFontSize(11);
   const contactAndAdressInfo = [
-    "Tajao, Pinamungajan, Cebu",
+    "Tajao, Pinamungajan, Cebu, Philippines",
     "+63 9638623607",
     "casenascharles@gmail.com",
     "casenascharles.vercel.app"
